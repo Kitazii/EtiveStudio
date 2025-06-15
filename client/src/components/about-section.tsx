@@ -12,25 +12,25 @@ function AnimatedCounter({ end, suffix, isVisible }: CounterProps) {
   useEffect(() => {
     if (!isVisible) return;
 
-    let startTime: number;
-    const duration = 3000; // 3 seconds animation - all counters finish together
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
+    const duration = 3000; // 3 seconds animation
+    const steps = 60; // Number of update steps for smooth animation
+    const stepDuration = duration / steps;
+    const increment = end / steps;
+    
+    let currentStep = 0;
+    
+    const timer = setInterval(() => {
+      currentStep++;
+      const newCount = Math.min(Math.floor(currentStep * increment), end);
+      setCount(newCount);
       
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentCount = Math.floor(easeOutQuart * end);
-      
-      setCount(currentCount);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setCount(end); // Ensure we hit the exact target
       }
-    };
+    }, stepDuration);
 
-    requestAnimationFrame(animate);
+    return () => clearInterval(timer);
   }, [end, isVisible]);
 
   return (
