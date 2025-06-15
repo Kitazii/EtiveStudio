@@ -13,7 +13,7 @@ function AnimatedCounter({ end, suffix, isVisible }: CounterProps) {
     if (!isVisible) return;
 
     let startTime: number;
-    const duration = 3000; // 3 seconds animation
+    const duration = 3000; // 3 seconds animation - all counters finish together
 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
