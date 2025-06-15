@@ -7,14 +7,19 @@ interface CounterProps {
   textColor?: string;
 }
 
-function AnimatedCounter({ end, suffix, isVisible, textColor = "brand-red" }: CounterProps) {
+function AnimatedCounter({
+  end,
+  suffix,
+  isVisible,
+  textColor = "brand-red",
+}: CounterProps) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration = 3000; // 3 seconds animation
-    const steps = 60; // Number of update steps for smooth animation
+    const duration = 500; // 5 mili-seconds animation
+    const steps = 120; // Number of update steps for smooth animation
     const stepDuration = duration / steps;
     const increment = end / steps;
 
@@ -36,7 +41,8 @@ function AnimatedCounter({ end, suffix, isVisible, textColor = "brand-red" }: Co
 
   return (
     <span className={`text-2xl font-bold ${textColor}`}>
-      {count}{suffix}
+      {count}
+      {suffix}
     </span>
   );
 }
@@ -107,12 +113,13 @@ export function AboutSection() {
               About <span className="brand-red">Etive Studio</span>
             </h2>
             <p className="text-lg brand-gray mb-6">
-              <span className="brand-red font-semibold text-xl">W</span>ith over a decade of experience in professional photography,
-              Etive Studio specializes in creating compelling visual narratives
-              for brands, events, and creative projects.
+              <span className="brand-red font-semibold text-xl">W</span>ith over
+              a decade of experience in professional photography, Etive Studio
+              specializes in creating compelling visual narratives for brands,
+              events, and creative projects.
             </p>
             <p className="text-lg brand-gray mb-8">
-              <span className="brand-red font-semibold text-xl">O</span>ur passion lies in capturing authentic moments and transforming
+              Our passion lies in capturing authentic moments and transforming
               them into powerful stories that resonate with audiences. From
               corporate headshots to brand campaigns, we bring technical
               expertise and creative vision to every project.
@@ -120,19 +127,34 @@ export function AboutSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="bg-brand-black text-white p-6 rounded-xl text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter end={10} suffix="+" isVisible={isInView} textColor="text-white" />
+                  <AnimatedCounter
+                    end={10}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
                 </div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </div>
               <div className="bg-brand-black text-white p-6 rounded-xl text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter end={500} suffix="+" isVisible={isInView} textColor="text-white" />
+                  <AnimatedCounter
+                    end={500}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
                 </div>
                 <div className="text-sm text-gray-300">Projects Completed</div>
               </div>
               <div className="bg-brand-red text-white p-6 rounded-xl text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter end={200} suffix="+" isVisible={isInView} textColor="text-white" />
+                  <AnimatedCounter
+                    end={200}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
                 </div>
                 <div className="text-sm text-gray-200">Happy Clients</div>
               </div>
