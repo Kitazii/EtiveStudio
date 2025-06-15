@@ -4,9 +4,10 @@ interface CounterProps {
   end: number;
   suffix: string;
   isVisible: boolean;
+  textColor?: string;
 }
 
-function AnimatedCounter({ end, suffix, isVisible }: CounterProps) {
+function AnimatedCounter({ end, suffix, isVisible, textColor = "brand-red" }: CounterProps) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -16,14 +17,14 @@ function AnimatedCounter({ end, suffix, isVisible }: CounterProps) {
     const steps = 60; // Number of update steps for smooth animation
     const stepDuration = duration / steps;
     const increment = end / steps;
-    
+
     let currentStep = 0;
-    
+
     const timer = setInterval(() => {
       currentStep++;
       const newCount = Math.min(Math.floor(currentStep * increment), end);
       setCount(newCount);
-      
+
       if (currentStep >= steps) {
         clearInterval(timer);
         setCount(end); // Ensure we hit the exact target
@@ -34,9 +35,9 @@ function AnimatedCounter({ end, suffix, isVisible }: CounterProps) {
   }, [end, isVisible]);
 
   return (
-    <div className="text-2xl font-bold brand-red">
+    <span className={`text-2xl font-bold ${textColor}`}>
       {count}{suffix}
-    </div>
+    </span>
   );
 }
 
@@ -63,7 +64,7 @@ export function AboutSection() {
           setIsInView(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (imageRef.current) {
@@ -81,7 +82,11 @@ export function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-16 md:py-24 bg-white min-h-[50vh]">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="py-16 md:py-24 bg-white min-h-[50vh]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
@@ -102,28 +107,34 @@ export function AboutSection() {
               About <span className="brand-red">Etive Studio</span>
             </h2>
             <p className="text-lg brand-gray mb-6">
-              With over a decade of experience in professional photography,
+              <span className="brand-red font-semibold text-xl">W</span>ith over a decade of experience in professional photography,
               Etive Studio specializes in creating compelling visual narratives
               for brands, events, and creative projects.
             </p>
             <p className="text-lg brand-gray mb-8">
-              Our passion lies in capturing authentic moments and transforming
+              <span className="brand-red font-semibold text-xl">O</span>ur passion lies in capturing authentic moments and transforming
               them into powerful stories that resonate with audiences. From
               corporate headshots to brand campaigns, we bring technical
               expertise and creative vision to every project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="text-center sm:text-left">
-                <AnimatedCounter end={10} suffix="+" isVisible={isInView} />
-                <div className="text-sm brand-gray">Years Experience</div>
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter end={10} suffix="+" isVisible={isInView} textColor="text-white" />
+                </div>
+                <div className="text-sm text-gray-300">Years Experience</div>
               </div>
-              <div className="text-center sm:text-left">
-                <AnimatedCounter end={500} suffix="+" isVisible={isInView} />
-                <div className="text-sm brand-gray">Projects Completed</div>
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter end={500} suffix="+" isVisible={isInView} textColor="text-white" />
+                </div>
+                <div className="text-sm text-gray-300">Projects Completed</div>
               </div>
-              <div className="text-center sm:text-left">
-                <AnimatedCounter end={200} suffix="+" isVisible={isInView} />
-                <div className="text-sm brand-gray">Happy Clients</div>
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter end={200} suffix="+" isVisible={isInView} textColor="text-white" />
+                </div>
+                <div className="text-sm text-gray-200">Happy Clients</div>
               </div>
             </div>
           </div>
