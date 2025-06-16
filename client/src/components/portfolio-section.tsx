@@ -1,38 +1,41 @@
 import { useState } from 'react';
-import { Play } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const portfolioItems = [
   {
     id: 1,
-    thumbnail: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=225",
-    title: "Wedding Photography Portfolio",
-    category: "Wedding"
+    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
+    title: "Wedding Photography Showcase",
+    category: "Wedding",
+    description: "Beautiful wedding moments captured"
   },
   {
     id: 2,
-    thumbnail: "https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=225",
+    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
     title: "Corporate Photography Portfolio",
-    category: "Corporate"
+    category: "Corporate",
+    description: "Professional corporate photography"
   },
   {
     id: 3,
-    thumbnail: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=225",
-    title: "Fashion Photography Portfolio",
-    category: "Fashion"
+    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
+    title: "Fashion Photography Collection",
+    category: "Fashion",
+    description: "Creative fashion photography sessions"
   },
   {
     id: 4,
-    thumbnail: "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=225",
-    title: "Event Photography Portfolio",
-    category: "Events"
+    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
+    title: "Event Photography Highlights",
+    category: "Events",
+    description: "Memorable event photography"
   }
 ];
 
 export function PortfolioSection() {
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
-  const handleImageLoad = (id: number) => {
-    setLoadedImages(prev => new Set([...prev, id]));
+  const openYouTubeVideo = (youtubeId: string) => {
+    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, '_blank');
   };
 
   return (
@@ -43,37 +46,58 @@ export function PortfolioSection() {
             Latest <span className="brand-red">Work</span>
           </h2>
           <p className="text-lg brand-gray">
-            Explore our recent photography and video projects
+            Explore our recent photography and video projects on YouTube
           </p>
         </div>
         
-        {/* Video Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* YouTube Video Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {portfolioItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-black"
+              onClick={() => openYouTubeVideo(item.youtubeId)}
             >
-              <div className="aspect-video bg-black">
-                <img
-                  src={item.thumbnail}
-                  alt={item.title}
-                  className={`lazy-load w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${
-                    loadedImages.has(item.id) ? 'loaded' : ''
-                  }`}
-                  onLoad={() => handleImageLoad(item.id)}
+              <div className="aspect-video relative">
+                <iframe
+                  src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1&showinfo=0`}
+                  title={item.title}
+                  className="w-full h-full rounded-xl"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
                 />
               </div>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Play className="w-12 h-12 text-white fill-white" />
+              
+              {/* Overlay with video info */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
+                <div className="text-white">
+                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-200 mb-2">{item.description}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-red-600 text-xs font-medium rounded">
+                      {item.category}
+                    </span>
+                    <ExternalLink className="w-4 h-4" />
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                <h3 className="text-white font-semibold text-sm">{item.category}</h3>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Call to action for YouTube channel */}
+        <div className="text-center mt-12">
+          <p className="text-brand-gray mb-4">See more of our work on YouTube</p>
+          <a
+            href="https://www.youtube.com/@EtiveStudio" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+          >
+            Visit Our YouTube Channel
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
