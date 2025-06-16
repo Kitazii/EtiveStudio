@@ -95,8 +95,8 @@ export function AboutSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="order-2 lg:order-1">
+          {/* Image with overlapping cards */}
+          <div className="order-2 lg:order-1 relative">
             <img
               ref={imageRef}
               src="https://images.unsplash.com/photo-1672950273686-0b02667f96aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
@@ -105,6 +105,44 @@ export function AboutSection() {
                 isLoaded ? "loaded" : ""
               }`}
             />
+            
+            {/* Overlapping cards positioned over the image */}
+            <div className="absolute bottom-6 -right-8 lg:-right-16 flex gap-4 w-max">
+              {/* First card - overlaps image by ~15% */}
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center min-w-[140px] shadow-lg">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter
+                    end={10}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
+                </div>
+                <div className="text-sm text-gray-300">Years Experience</div>
+              </div>
+              
+              {/* Second card - red background */}
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center min-w-[140px] shadow-lg">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter
+                    end={500}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
+                </div>
+                <div className="text-sm text-gray-200">Projects Completed</div>
+              </div>
+              
+              {/* Third element - image instead of card */}
+              <div className="min-w-[140px] h-[120px] rounded-xl shadow-lg overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=280&h=240"
+                  alt="Creative photography work"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Text */}
@@ -128,41 +166,6 @@ export function AboutSection() {
               corporate headshots to brand campaigns, we bring technical
               expertise and creative vision to every project.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={10}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-300">Years Experience</div>
-              </div>
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={500}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-300">Projects Completed</div>
-              </div>
-              <div className="bg-brand-red text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={200}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-200">Happy Clients</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
