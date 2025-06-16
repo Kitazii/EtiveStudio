@@ -112,23 +112,22 @@ export function AboutSection() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
               About <span className="brand-red">Etive Studio</span>
             </h2>
-            <div className="flex items-start mb-6">
-              <span className="brand-red font-semibold text-lg mr-1 leading-[1.6]">W</span>
-              <p className="text-lg brand-gray flex-1">
+            <div className="flex items-start">
+              <div className="text-6xl text-gray-500 mr-2 w-[2.5em] leading-none">
+                W
+              </div>
+              <p className="text-lg brand-gray">
                 ith over a decade of experience in professional photography,
                 Etive Studio specializes in creating compelling visual
                 narratives for brands, events, and creative projects.
               </p>
             </div>
-            <div className="flex items-start mb-8">
-              <span className="brand-red font-semibold text-lg mr-1 leading-[1.6]">O</span>
-              <p className="text-lg brand-gray flex-1">
-                ur passion lies in capturing authentic moments and transforming
-                them into powerful stories that resonate with audiences. From
-                corporate headshots to brand campaigns, we bring technical
-                expertise and creative vision to every project.
-              </p>
-            </div>
+            <p className="text-lg brand-gray mb-8">
+              Our passion lies in capturing authentic moments and transforming
+              them into powerful stories that resonate with audiences. From
+              corporate headshots to brand campaigns, we bring technical
+              expertise and creative vision to every project.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="bg-brand-black text-white p-6 rounded-xl text-center">
                 <div className="text-2xl font-bold text-white mb-2">
