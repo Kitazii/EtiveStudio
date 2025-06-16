@@ -95,8 +95,8 @@ export function AboutSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="order-2 lg:order-1">
+          {/* Image Section with Overlapping Card */}
+          <div className="order-2 lg:order-1 relative">
             <img
               ref={imageRef}
               src="https://images.unsplash.com/photo-1672950273686-0b02667f96aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
@@ -105,9 +105,21 @@ export function AboutSection() {
                 isLoaded ? "loaded" : ""
               }`}
             />
+            {/* Overlapping Years Experience Card */}
+            <div className="absolute -right-4 lg:-right-8 top-1/2 transform -translate-y-1/2 bg-brand-black text-white p-6 rounded-xl text-center shadow-2xl z-10 min-w-[140px]">
+              <div className="text-2xl font-bold text-white mb-2">
+                <AnimatedCounter
+                  end={10}
+                  suffix="+"
+                  isVisible={isInView}
+                  textColor="text-white"
+                />
+              </div>
+              <div className="text-sm text-gray-300">Years Experience</div>
+            </div>
           </div>
 
-          {/* Text */}
+          {/* Text Section */}
           <div className="order-1 lg:order-2">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
               About <span className="brand-red">Etive Studio</span>
@@ -128,19 +140,11 @@ export function AboutSection() {
               corporate headshots to brand campaigns, we bring technical
               expertise and creative vision to every project.
             </p>
+            
+            {/* Stats Cards Row */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={10}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-300">Years Experience</div>
-              </div>
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
+              {/* Projects Completed - Red Card */}
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center flex-1">
                 <div className="text-2xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={500}
@@ -149,18 +153,16 @@ export function AboutSection() {
                     textColor="text-white"
                   />
                 </div>
-                <div className="text-sm text-gray-300">Projects Completed</div>
+                <div className="text-sm text-gray-200">Projects Completed</div>
               </div>
-              <div className="bg-brand-red text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={200}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-200">Happy Clients</div>
+              
+              {/* Thematic Image Card */}
+              <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square max-w-[140px] sm:max-w-none">
+                <img
+                  src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Photography equipment and creative workspace"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
