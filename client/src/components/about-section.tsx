@@ -94,9 +94,9 @@ export function AboutSection() {
       className="py-16 md:py-24 bg-white min-h-[50vh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="order-2 lg:order-1 mb-8 lg:mb-0">
+          <div className="order-2 lg:order-1">
             <img
               ref={imageRef}
               src="https://images.unsplash.com/photo-1672950273686-0b02667f96aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
@@ -107,7 +107,7 @@ export function AboutSection() {
             />
           </div>
 
-          {/* Text Content */}
+          {/* Text */}
           <div className="order-1 lg:order-2">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
               About <span className="brand-red">Etive Studio</span>
@@ -128,38 +128,40 @@ export function AboutSection() {
               corporate headshots to brand campaigns, we bring technical
               expertise and creative vision to every project.
             </p>
-          </div>
-
-          {/* Statistics Cards - Positioned to overlap image */}
-          <div className="absolute bottom-0 left-0 lg:left-[-7.5%] w-full lg:w-auto z-10 flex flex-col sm:flex-row gap-4 px-4 lg:px-0">
-            <div className="bg-brand-black text-white p-6 rounded-xl text-center shadow-xl lg:min-w-[120px]">
-              <div className="text-2xl font-bold text-white mb-2">
-                <AnimatedCounter
-                  end={10}
-                  suffix="+"
-                  isVisible={isInView}
-                  textColor="text-white"
-                />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter
+                    end={10}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
+                </div>
+                <div className="text-sm text-gray-300">Years Experience</div>
               </div>
-              <div className="text-sm text-gray-300">Years Experience</div>
-            </div>
-            <div className="bg-brand-red text-white p-6 rounded-xl text-center shadow-xl lg:min-w-[120px]">
-              <div className="text-2xl font-bold text-white mb-2">
-                <AnimatedCounter
-                  end={500}
-                  suffix="+"
-                  isVisible={isInView}
-                  textColor="text-white"
-                />
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter
+                    end={500}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
+                </div>
+                <div className="text-sm text-gray-300">Projects Completed</div>
               </div>
-              <div className="text-sm text-gray-200">Projects Completed</div>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-xl lg:min-w-[120px] h-[88px]">
-              <img
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=240&h=176"
-                alt="Photography equipment"
-                className="w-full h-full object-cover"
-              />
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center">
+                <div className="text-2xl font-bold text-white mb-2">
+                  <AnimatedCounter
+                    end={200}
+                    suffix="+"
+                    isVisible={isInView}
+                    textColor="text-white"
+                  />
+                </div>
+                <div className="text-sm text-gray-200">Happy Clients</div>
+              </div>
             </div>
           </div>
         </div>
