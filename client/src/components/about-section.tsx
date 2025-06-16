@@ -129,8 +129,9 @@ export function AboutSection() {
               expertise and creative vision to every project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
+              {/* 10+ Years Experience Card */}
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center flex-1">
+                <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={10}
                     suffix="+"
@@ -140,8 +141,10 @@ export function AboutSection() {
                 </div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </div>
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
+              
+              {/* 500+ Projects Card (Red) */}
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center flex-1">
+                <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={500}
                     suffix="+"
@@ -149,18 +152,16 @@ export function AboutSection() {
                     textColor="text-white"
                   />
                 </div>
-                <div className="text-sm text-gray-300">Projects Completed</div>
+                <div className="text-sm text-gray-200">Projects Completed</div>
               </div>
-              <div className="bg-brand-red text-white p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-white mb-2">
-                  <AnimatedCounter
-                    end={200}
-                    suffix="+"
-                    isVisible={isInView}
-                    textColor="text-white"
-                  />
-                </div>
-                <div className="text-sm text-gray-200">Happy Clients</div>
+              
+              {/* Image Card */}
+              <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Professional photography equipment"
+                  className="w-full h-full object-cover filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
+                />
               </div>
             </div>
           </div>
