@@ -96,9 +96,6 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Section */}
         <div className="text-left mb-12">
-          <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-4">
-            ABOUT US
-          </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
             About <span className="brand-red">Etive Studio</span>
           </h2>
