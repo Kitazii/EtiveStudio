@@ -40,7 +40,7 @@ function AnimatedCounter({
   }, [end, isVisible]);
 
   return (
-    <span className={`text-2xl font-bold ${textColor}`}>
+    <span className={`text-3xl font-bold ${textColor}`}>
       {count}
       {suffix}
     </span>
@@ -113,7 +113,7 @@ export function AboutSection() {
               About <span className="brand-red">Etive Studio</span>
             </h2>
             <div className="flex items-start">
-              <div className="text-6xl text-gray-500 mr-2 w-[2.5em] leading-none">
+              <div className="text-6xl text-brand-black mr-2 w-[2.5em] leading-none">
                 W
               </div>
               <p className="text-lg brand-gray">
@@ -130,7 +130,7 @@ export function AboutSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* 10+ Years Experience Card */}
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center flex-1">
+              <div className="bg-brand-black text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={10}
@@ -141,9 +141,9 @@ export function AboutSection() {
                 </div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </div>
-              
+
               {/* 500+ Projects Card (Red) */}
-              <div className="bg-brand-red text-white p-6 rounded-xl text-center flex-1">
+              <div className="bg-brand-red text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={500}
@@ -154,7 +154,7 @@ export function AboutSection() {
                 </div>
                 <div className="text-sm text-gray-200">Projects Completed</div>
               </div>
-              
+
               {/* Image Card */}
               <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square">
                 <img
