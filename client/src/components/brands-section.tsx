@@ -1,54 +1,69 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const brandLogos = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Technology Brand",
+    src: "https://logo.clearbit.com/amazon.com",
+    alt: "Amazon",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Fashion Brand",
+    src: "https://logo.clearbit.com/ibm.com",
+    alt: "IBM",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Automotive Brand",
+    src: "https://logo.clearbit.com/linkedin.com",
+    alt: "LinkedIn",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Food & Beverage Brand",
+    src: "https://logo.clearbit.com/apple.com",
+    alt: "Apple",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1638481826540-7710b13f7d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Financial Services",
+    src: "https://logo.clearbit.com/google.com",
+    alt: "Google",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Healthcare Brand",
+    src: "https://logo.clearbit.com/verizon.com",
+    alt: "Verizon",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1560472354-761f8ecd3be4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Entertainment Company",
+    src: "https://logo.clearbit.com/ge.com",
+    alt: "General Electric",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1560472355-b90a50be8b54?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100",
-    alt: "Retail Brand",
+    src: "https://logo.clearbit.com/netflix.com",
+    alt: "Netflix",
+  },
+  {
+    id: 9,
+    src: "https://logo.clearbit.com/nike.com",
+    alt: "Nike",
+  },
+  {
+    id: 10,
+    src: "https://logo.clearbit.com/microsoft.com",
+    alt: "Microsoft",
+  },
+  {
+    id: 11,
+    src: "https://logo.clearbit.com/nvidia.com",
+    alt: "NVIDIA",
+  },
+  {
+    id: 12,
+    src: "https://logo.clearbit.com/salesforce.com",
+    alt: "Salesforce",
   },
 ];
 
 export function BrandsSection() {
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-
-  const handleImageLoad = (id: number) => {
-    setLoadedImages((prev) => new Set([...prev, id]));
-  };
 
   return (
     <section id="brands" className="py-16 md:py-24 bg-brand-light min-h-[50vh]">
@@ -63,27 +78,20 @@ export function BrandsSection() {
           </p>
         </div>
 
-        {/* Brand Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+        {/* Brand Logos Grid - Clean and Slick */}
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center">
           {brandLogos.map((brand) => (
             <div
               key={brand.id}
-              className="brand-logo p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 w-full max-w-[200px] h-[100px] flex items-center justify-center"
+              className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
             >
               <img
                 src={brand.src}
                 alt={brand.alt}
-                className={`lazy-load max-h-12 max-w-full w-auto mx-auto transition-opacity duration-300 ${
-                  loadedImages.has(brand.id) ? "loaded" : ""
-                }`}
-                onLoad={() => handleImageLoad(brand.id)}
+                className="h-8 md:h-10 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent) {
-                    parent.innerHTML = `<span class="text-xs text-gray-500 text-center px-2">${brand.alt}</span>`;
-                  }
                 }}
               />
             </div>
