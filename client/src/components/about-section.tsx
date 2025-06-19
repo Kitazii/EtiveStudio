@@ -91,7 +91,7 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-24 md:py-32 bg-white min-h-[50vh]"
+      className="py-16 md:py-24 bg-white min-h-[50vh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Section */}
@@ -170,28 +170,6 @@ export function AboutSection() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-        
-        {/* Trusted Brands Footer */}
-        <div className="mt-20 pt-12 border-t border-gray-100">
-          <div className="text-center mb-8">
-            <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-4">
-              TRUSTED BY
-            </p>
-            <h3 className="font-display text-2xl font-bold text-brand-black">
-              Leading <span className="brand-red">Brands</span>
-            </h3>
-          </div>
-          
-          {/* Brand Logos */}
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center opacity-60">
-            <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
-            <img src="https://logo.clearbit.com/ibm.com" alt="IBM" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
-            <img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
-            <img src="https://logo.clearbit.com/apple.com" alt="Apple" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
-            <img src="https://logo.clearbit.com/google.com" alt="Google" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
-            <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" className="h-6 md:h-8 w-auto object-contain filter grayscale" />
           </div>
         </div>
       </div>
