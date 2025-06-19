@@ -51,7 +51,7 @@ export function PortfolioSection() {
         </div>
         
         {/* YouTube Video Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {portfolioItems.map((item) => (
             <div
               key={item.id}
@@ -84,20 +84,6 @@ export function PortfolioSection() {
               </div>
             </div>
           ))}
-        </div>
-        
-        {/* Call to action for YouTube channel */}
-        <div className="text-center mt-12">
-          <p className="text-brand-gray mb-4">See more of our work on YouTube</p>
-          <a
-            href="https://www.youtube.com/@EtiveStudio" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
-          >
-            Visit Our YouTube Channel
-            <ExternalLink className="w-4 h-4" />
-          </a>
         </div>
       </div>
     </section>
