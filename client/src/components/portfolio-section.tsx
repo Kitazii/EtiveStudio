@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { Button } from '@/components/ui/button';
 
 const portfolioItems = [
   {
@@ -38,19 +39,24 @@ export function PortfolioSection() {
   };
 
   return (
-    <section id="portfolio" className="py-16 md:py-24 bg-white min-h-[50vh]">
+    <section id="portfolio" className="py-24 md:py-32 bg-white min-h-[50vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            LATEST <span className="brand-red">WORK</span>
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-4">
+            OUR PORTFOLIO
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">
+            CRAFTING VISUAL<br />
+            <span className="brand-red">NARRATIVES</span>
           </h2>
-          <p className="text-lg brand-gray">
-            Explore our recent photography and video projects on YouTube
+          <p className="text-lg brand-gray max-w-3xl mx-auto leading-relaxed">
+            We create high-impact visual content that transforms your brand's vision into compelling stories. 
+            Explore our recent photography and video projects.
           </p>
         </div>
 
         {/* YouTube Video Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {portfolioItems.map((item) => (
             <div
               key={item.id}
@@ -85,6 +91,13 @@ export function PortfolioSection() {
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <Button className="bg-brand-red hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold">
+            Get In Touch
+          </Button>
         </div>
       </div>
     </section>

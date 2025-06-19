@@ -164,7 +164,7 @@ export function ContactSection() {
                   CONTACT US
                 </p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-                  GET IN <span className="brand-red">TOUCH</span>
+                  GET IN TOUCH
                 </h2>
               </div>
 

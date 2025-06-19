@@ -55,8 +55,6 @@ export default function Home() {
       <Navigation activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
-      <BrandsSection />
-      <VisualNarrativesSection />
       <PortfolioSection />
       <ContactSection />
       <Footer />
