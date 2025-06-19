@@ -103,7 +103,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 relative">
             <img
               ref={imageRef}
               src="https://images.unsplash.com/photo-1672950273686-0b02667f96aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
@@ -112,6 +112,8 @@ export function AboutSection() {
                 isLoaded ? "loaded" : ""
               }`}
             />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
           </div>
 
           {/* Text */}
