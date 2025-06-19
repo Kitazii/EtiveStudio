@@ -53,8 +53,21 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-brand-light min-h-[50vh]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-16 md:py-24 min-h-[50vh] overflow-hidden">
+      {/* Parallax Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`,
+        }}
+      ></div>
+      
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-brand-light/85"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
             Get In <span className="brand-red">Touch</span>
@@ -153,6 +166,7 @@ export function ContactSection() {
             </Button>
           </form>
         </Form>
+        </div>
       </div>
     </section>
   );
