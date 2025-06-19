@@ -97,7 +97,7 @@ export function AboutSection() {
         {/* Title Section */}
         <div className="text-left mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
-            About <span className="brand-red">Etive Studio</span>
+            ABOUT <span className="brand-red">ETIVE STUDIO</span>
           </h2>
         </div>
 

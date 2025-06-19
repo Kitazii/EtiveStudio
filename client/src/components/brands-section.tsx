@@ -64,13 +64,12 @@ const brandLogos = [
 ];
 
 export function BrandsSection() {
-
   return (
     <section id="brands" className="py-16 md:py-24 bg-brand-light min-h-[50vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            Trusted by <span className="brand-red">Leading Brands</span>
+            TRUSTED BY <span className="brand-red">LEADING BRANDS</span>
           </h2>
           <p className="text-lg brand-gray">
             We've had the privilege of working with industry leaders and
@@ -91,7 +90,7 @@ export function BrandsSection() {
                 className="h-8 md:h-10 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
+                  target.style.display = "none";
                 }}
               />
             </div>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { useState } from "react";
+import { ExternalLink } from "lucide-react";
 
 const portfolioItems = [
   {
@@ -7,35 +7,34 @@ const portfolioItems = [
     youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
     title: "Wedding Photography Showcase",
     category: "Wedding",
-    description: "Beautiful wedding moments captured"
+    description: "Beautiful wedding moments captured",
   },
   {
     id: 2,
     youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
     title: "Corporate Photography Portfolio",
     category: "Corporate",
-    description: "Professional corporate photography"
+    description: "Professional corporate photography",
   },
   {
     id: 3,
     youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
     title: "Fashion Photography Collection",
     category: "Fashion",
-    description: "Creative fashion photography sessions"
+    description: "Creative fashion photography sessions",
   },
   {
     id: 4,
     youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
     title: "Event Photography Highlights",
     category: "Events",
-    description: "Memorable event photography"
-  }
+    description: "Memorable event photography",
+  },
 ];
 
 export function PortfolioSection() {
-
   const openYouTubeVideo = (youtubeId: string) => {
-    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, '_blank');
+    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, "_blank");
   };
 
   return (
@@ -43,13 +42,13 @@ export function PortfolioSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            Latest <span className="brand-red">Work</span>
+            LATEST <span className="brand-red">WORK</span>
           </h2>
           <p className="text-lg brand-gray">
             Explore our recent photography and video projects on YouTube
           </p>
         </div>
-        
+
         {/* YouTube Video Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {portfolioItems.map((item) => (
@@ -68,12 +67,14 @@ export function PortfolioSection() {
                   loading="lazy"
                 />
               </div>
-              
+
               {/* Overlay with video info */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
                 <div className="text-white">
                   <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-200 mb-2">{item.description}</p>
+                  <p className="text-sm text-gray-200 mb-2">
+                    {item.description}
+                  </p>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-1 bg-red-600 text-xs font-medium rounded">
                       {item.category}

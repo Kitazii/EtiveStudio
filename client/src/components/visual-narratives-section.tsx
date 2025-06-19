@@ -16,8 +16,8 @@ export function VisualNarrativesSection() {
               NARRATIVES
             </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              WE CREATE HIGH-IMPACT VIDEO CONTENT THAT TRANSFORMS YOUR BRAND'S
-              VISION INTO A COMPELLING STORY, REACHING AUDIENCES WORLDWIDE.
+              we create high-impact video content that transforms your brand's
+              vision into a compelling story, reaching audiences worldwide.
             </p>
             <Button className="bg-brand-red hover:bg-red-700 text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide">
               LET'S MAKE A SCENE
@@ -42,6 +42,8 @@ export function VisualNarrativesSection() {
                   </span>
                 </div>
               )}
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
               {/* Red geometric overlay */}
               <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-brand-red/80 to-transparent"></div>
               <div className="absolute top-0 left-0 w-16 h-20 bg-brand-red/60"></div>
