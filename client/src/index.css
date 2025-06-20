@@ -23,7 +23,7 @@
   --destructive-foreground: hsl(0, 0%, 100%);
   --ring: hsl(0, 0%, 0%);
   --radius: 0.5rem;
-  
+
   /* Brand colors */
   --brand-red: hsl(0, 73%, 41%);
   --brand-black: hsl(220, 26%, 14%);
@@ -73,37 +73,37 @@
   .font-display {
     font-family: 'Playfair Display', serif;
   }
-  
+
   .brand-red {
     color: var(--brand-red);
   }
-  
+
   .bg-brand-red {
     background-color: var(--brand-red);
   }
-  
+
   .border-brand-red {
     border-color: var(--brand-red);
   }
-  
+
   .brand-black {
     color: var(--brand-black);
   }
-  
+
   .bg-brand-black {
     background-color: var(--brand-black);
   }
-  
+
   .brand-gray {
     color: var(--brand-gray);
   }
-  
+
   .bg-brand-light {
     background-color: var(--brand-light);
   }
 
   .video-overlay {
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.7) 0%, rgba(220, 38, 38, 0.3) 100%);
+    background: linear-gradient(90deg, rgba(220, 38, 38, 0.3) 0%, rgb(201, 201, 201, 0.7) 120%);
   }
 
   .lazy-load {
@@ -119,7 +119,7 @@
     filter: grayscale(100%);
     transition: all 0.3s ease;
   }
-  
+
   .brand-logo:hover {
     filter: grayscale(0%);
     transform: scale(1.05);

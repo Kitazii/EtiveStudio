@@ -40,7 +40,7 @@ export function HeroSection() {
             <br />
             <span className="text-red-500">CREATING STORIES</span>
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-200">
+          <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-150">
             Professional photography services that bring your vision to life
           </p>
           <Button

@@ -68,9 +68,12 @@ export function BrandsSection() {
     <section id="brands" className="py-16 md:py-24 bg-brand-light min-h-[50vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            TRUSTED BY <span className="brand-red">LEADING BRANDS</span>
-          </h2>
+          {/* Underline */}
+          <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
+              TRUSTED BY <span className="brand-gray">LEADING BRANDS</span>
+            </h2>
+          </span>
           <p className="text-lg brand-gray">
             We've had the privilege of working with industry leaders and
             innovative companies

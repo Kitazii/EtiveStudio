@@ -41,9 +41,12 @@ export function PortfolioSection() {
     <section id="portfolio" className="py-16 md:py-24 bg-white min-h-[50vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            LATEST <span className="brand-red">WORK</span>
-          </h2>
+          {/* Underline */}
+          <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
+              LATEST <span className="brand-gray">WORK</span>
+            </h2>
+          </span>
           <p className="text-lg brand-gray">
             Explore our recent photography and video projects on YouTube
           </p>

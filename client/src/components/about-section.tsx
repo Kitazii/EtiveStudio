@@ -114,7 +114,9 @@ export function AboutSection() {
             {/* Title Section */}
             <div className="text-left mb-8">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
-                ABOUT <span className="brand-red">ETIVE STUDIO</span>
+                <span className="inline-block border-b-4 border-brand-red pb-1">
+                  ABOUT <span className="brand-gray">ETIVE STUDIO</span>
+                </span>
               </h2>
             </div>
             <div className="flex items-start">
@@ -135,29 +137,29 @@ export function AboutSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* 10+ Years Experience Card */}
-              <div className="bg-brand-black text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
+              <div className="bg-gray-200 text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={10}
                     suffix="+"
                     isVisible={isInView}
-                    textColor="text-white"
+                    textColor="text-black"
                   />
                 </div>
-                <div className="text-sm text-gray-300">Years Experience</div>
+                <div className="text-sm text-gray-900">Years Experience</div>
               </div>
 
-              {/* 500+ Projects Card (Red) */}
-              <div className="bg-brand-red text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
+              {/* 500+ Projects Card */}
+              <div className="bg-gray-200 text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
                     end={500}
                     suffix="+"
                     isVisible={isInView}
-                    textColor="text-white"
+                    textColor="text-black"
                   />
                 </div>
-                <div className="text-sm text-gray-200">Projects Completed</div>
+                <div className="text-sm text-gray-900">Projects Completed</div>
               </div>
 
               {/* Image Card */}

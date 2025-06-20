@@ -65,41 +65,38 @@ export function ContactSection() {
       className="relative py-16 md:py-24 min-h-[50vh] overflow-hidden bg-brand-light"
     >
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Business Information Section */}
             <div className="text-brand-black">
-              <div className="mb-8">
-                <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-4">
-                  GET BOOKED
-                </p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 ">
+                {/* Underline */}
+                <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
                   Book Your{" "}
-                  <span className="brand-red">Photography Session</span>
-                </h2>
-                <p className="text-lg brand-gray mb-8 leading-relaxed">
-                  Ready to capture your vision? Whether you want to book a full
-                  photography session or just discuss your project, we've got
-                  you covered. Reach out to us using the details below.
-                </p>
-              </div>
+                  <span className="brand-gray">Photography Session</span>
+                </span>
+              </h2>
+              <p className="text-lg brand-gray mb-8 leading-relaxed">
+                Ready to capture your vision? Whether you want to book a full
+                photography session or just discuss your project, we've got you
+                covered. Reach out to us using the details below.
+              </p>
 
               {/* Contact Details */}
               <div className="space-y-6 mb-8">
-                <div className="flex items-center space-x-3">
-                  <span className="brand-red">📞</span>
-                  <span className="brand-gray">(+44) 123 456 789</span>
+                <div className="flex flex-col items-center space-x-3">
+                  <span className="brand-gray">📞(+44) 123 456 789</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <span className="brand-red">✉️</span>
-                  <span className="brand-gray">info@etivestudio.com</span>
+                <div className="flex flex-col items-center space-x-3">
+                  <span className="brand-gray"></span>
+                  <span className="brand-gray">✉️info@etivestudio.com</span>
                 </div>
               </div>
 
               {/* Business Hours */}
               <div className="mb-8">
-                <h3 className="brand-red font-semibold mb-3">
+                <h3 className="brand-gray font-semibold mb-3">
                   Mon - Fri : 09:00 - 18:00 / Sat - Sun : 10:00 - 16:00
                 </h3>
               </div>
@@ -114,14 +111,12 @@ export function ContactSection() {
 
             {/* Contact Form Section */}
             <div>
-              <div className="mb-8">
-                <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-4">
-                  CONTACT US
-                </p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4 text-center">
+                {/* Underline */}
+                <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
                   Get In Touch
-                </h2>
-              </div>
+                </span>
+              </h2>
 
               <Form {...form}>
                 <form
