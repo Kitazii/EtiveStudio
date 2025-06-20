@@ -1,15 +1,22 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { insertContactSchema, type InsertContact } from '@shared/schema';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { insertContactSchema, type InsertContact } from "@shared/schema";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 export function ContactSection() {
   const [captchaChecked, setCaptchaChecked] = useState(false);
@@ -18,32 +25,32 @@ export function ContactSection() {
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     },
   });
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
       if (!captchaChecked) {
-        throw new Error('Please complete the captcha verification');
+        throw new Error("Please complete the captcha verification");
       }
-      return apiRequest('POST', '/api/contacts', data);
+      return apiRequest("POST", "/api/contacts", data);
     },
     onSuccess: () => {
       toast({
-        title: 'Message Sent!',
-        description: 'Thank you for your message. We\'ll get back to you soon.',
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll get back to you soon.",
       });
       form.reset();
       setCaptchaChecked(false);
     },
     onError: (error: any) => {
       toast({
-        title: 'Error',
-        description: error.message || 'Something went wrong. Please try again.',
-        variant: 'destructive',
+        title: "Error",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
       });
     },
   });
@@ -53,23 +60,14 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-16 md:py-24 min-h-[50vh] overflow-hidden">
-      {/* Parallax Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`,
-        }}
-      ></div>
-      
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-brand-light/85"></div>
-      
+    <section
+      id="contact"
+      className="relative py-16 md:py-24 min-h-[50vh] overflow-hidden bg-brand-light"
+    >
       {/* Content */}
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            
             {/* Business Information Section */}
             <div className="text-brand-black">
               <div className="mb-8">
@@ -77,10 +75,13 @@ export function ContactSection() {
                   GET BOOKED
                 </p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                  Book Your <span className="brand-red">Photography Session</span>
+                  Book Your{" "}
+                  <span className="brand-red">Photography Session</span>
                 </h2>
                 <p className="text-lg brand-gray mb-8 leading-relaxed">
-                  Ready to capture your vision? Whether you want to book a full photography session or just discuss your project, we've got you covered. Reach out to us using the details below.
+                  Ready to capture your vision? Whether you want to book a full
+                  photography session or just discuss your project, we've got
+                  you covered. Reach out to us using the details below.
                 </p>
               </div>
 
@@ -98,7 +99,9 @@ export function ContactSection() {
 
               {/* Business Hours */}
               <div className="mb-8">
-                <h3 className="brand-red font-semibold mb-3">Mon - Fri : 09:00 - 18:00 / Sat - Sun : 10:00 - 16:00</h3>
+                <h3 className="brand-red font-semibold mb-3">
+                  Mon - Fri : 09:00 - 18:00 / Sat - Sun : 10:00 - 16:00
+                </h3>
               </div>
 
               {/* Address */}
@@ -119,9 +122,12 @@ export function ContactSection() {
                   Get In Touch
                 </h2>
               </div>
-              
+
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     {/* Name Field */}
                     <FormField
@@ -129,7 +135,9 @@ export function ContactSection() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium brand-gray">Full Name *</FormLabel>
+                          <FormLabel className="text-sm font-medium brand-gray">
+                            Full Name *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Your full name"
@@ -141,14 +149,16 @@ export function ContactSection() {
                         </FormItem>
                       )}
                     />
-                    
+
                     {/* Email Field */}
                     <FormField
                       control={form.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium brand-gray">Email Address *</FormLabel>
+                          <FormLabel className="text-sm font-medium brand-gray">
+                            Email Address *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               type="email"
@@ -191,7 +201,9 @@ export function ContactSection() {
                       <Checkbox
                         id="captcha"
                         checked={captchaChecked}
-                        onCheckedChange={(checked) => setCaptchaChecked(checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          setCaptchaChecked(checked as boolean)
+                        }
                         className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                       />
                       <label htmlFor="captcha" className="text-sm brand-gray">
@@ -199,14 +211,14 @@ export function ContactSection() {
                       </label>
                     </div>
                   </div>
-                  
+
                   {/* Submit Button */}
                   <Button
                     type="submit"
                     disabled={contactMutation.isPending}
                     className="w-full bg-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-red-700 focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors duration-200"
                   >
-                    {contactMutation.isPending ? 'Sending...' : 'Send Message'}
+                    {contactMutation.isPending ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </Form>
