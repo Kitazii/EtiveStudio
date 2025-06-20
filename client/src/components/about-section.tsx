@@ -94,13 +94,6 @@ export function AboutSection() {
       className="py-16 md:py-24 bg-white min-h-[50vh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title Section */}
-        <div className="text-left mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
-            ABOUT <span className="brand-red">ETIVE STUDIO</span>
-          </h2>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="order-2 lg:order-1 relative">
@@ -118,6 +111,12 @@ export function AboutSection() {
 
           {/* Text */}
           <div className="order-1 lg:order-2">
+            {/* Title Section */}
+            <div className="text-left mb-8">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
+                ABOUT <span className="brand-red">ETIVE STUDIO</span>
+              </h2>
+            </div>
             <div className="flex items-start">
               <div className="text-6xl text-brand-black mr-2 w-[2.5em] leading-none">
                 W
