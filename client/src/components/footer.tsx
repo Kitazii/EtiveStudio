@@ -9,13 +9,13 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-brand-black text-white py-12">
+    <footer className="bg-white text-brand-black py-12 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Copyright */}
           <div className="mb-6 md:mb-0">
-            <h3 className="font-display text-2xl font-bold mb-2">Etive Studio</h3>
-            <p className="text-gray-400 text-sm">
+            <h3 className="font-display text-2xl font-bold mb-2 text-brand-black">Etive Studio</h3>
+            <p className="text-gray-600 text-sm">
               © 2024 Etive Studio. All rights reserved.
             </p>
           </div>
@@ -28,7 +28,7 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-gray-400 hover:text-red-500 transition-colors duration-200"
+                  className="text-gray-600 hover:text-brand-red transition-colors duration-200"
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
