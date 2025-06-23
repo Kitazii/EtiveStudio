@@ -24,12 +24,12 @@ export function VisualNarrativesSection() {
     <section ref={sectionRef} className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col overflow-hidden">
       {/* Parallax Background */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-300"
+        className="absolute inset-0 w-full h-[110%] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1531152127291-ea24c3b2a1da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-          transform: `translateY(${parallaxOffset * 0.3}px)`,
-          top: 0,
+          transform: `translateY(${parallaxOffset * 0.1}px)`,
+          top: '-5%',
         }}
         aria-hidden
       />
