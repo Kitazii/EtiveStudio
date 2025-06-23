@@ -23,11 +23,7 @@ export function HeroSection() {
         playsInline
       >
         <source
-          src="https://cdn.pixabay.com/vimeo/229580567/mountains-11574.mp4?width=1280&hash=77885e07fa63e05abec6a8c64a86c1eee0598dc4"
-          type="video/mp4"
-        />
-        <source
-          src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-beautiful-mountains-covered-with-snow-39658-large.mp4"
+          src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
