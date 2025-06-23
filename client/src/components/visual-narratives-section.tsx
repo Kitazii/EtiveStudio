@@ -28,7 +28,7 @@ export function VisualNarrativesSection() {
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1531152127291-ea24c3b2a1da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-          transform: `translateY(${parallaxOffset * 0.1}px)`,
+          transform: `translateY(${parallaxOffset * 0.2}px)`,
           top: '-5%',
         }}
         aria-hidden
