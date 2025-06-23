@@ -51,7 +51,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-20 md:pb-0">
       <Navigation activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
