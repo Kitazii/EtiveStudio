@@ -21,21 +21,24 @@ export function VisualNarrativesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col overflow-hidden"
+    >
       {/* Parallax Background */}
       <div
         className="absolute inset-0 w-full h-[110%] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1531152127291-ea24c3b2a1da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-          transform: `translateY(${parallaxOffset * 0.2}px)`,
-          top: '-5%',
+          transform: `translateY(${parallaxOffset * 0.3}px)`,
+          top: "5%",
         }}
         aria-hidden
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70 z-10"></div>
+      <div className="absolute inset-0 bg-black/80 z-10"></div>
 
       {/* Red geometric overlays */}
       <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-brand-red/80 to-transparent z-20"></div>
