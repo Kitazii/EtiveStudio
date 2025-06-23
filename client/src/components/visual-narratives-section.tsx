@@ -2,23 +2,33 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 
 export function VisualNarrativesSection() {
-  const [scrollY, setScrollY] = useState(0);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const sectionTop = rect.top + window.scrollY;
+        const scrollPosition = window.scrollY - sectionTop;
+        setParallaxOffset(scrollPosition);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initialize on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col overflow-hidden">
       {/* Parallax Background */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-300"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1531152127291-ea24c3b2a1da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
-          transform: `translateY(${scrollY * 0.15}px)`,
+          transform: `translateY(${parallaxOffset * 0.3}px)`,
           top: 0,
         }}
         aria-hidden
