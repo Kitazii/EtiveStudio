@@ -60,11 +60,11 @@ export function VisualNarrativesSection() {
         </div>
       </div>
 
-      {/* Full-width horizontal banner button */}
-      <div className="relative z-30 w-full">
-        <Button className="w-full bg-brand-red hover:bg-red-700 text-white py-6 text-lg font-semibold uppercase tracking-wide rounded-none border-none">
+      {/* Full-width horizontal banner */}
+      <div className="relative z-30 w-full bg-brand-red text-white py-6 text-center">
+        <span className="text-lg font-semibold uppercase tracking-wide">
           LET'S MAKE A SCENE
-        </Button>
+        </span>
       </div>
     </section>
   );
