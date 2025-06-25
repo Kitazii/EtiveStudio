@@ -18,8 +18,8 @@ function AnimatedCounter({
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration = 500; // 5 mili-seconds animation
-    const steps = 120; // Number of update steps for smooth animation
+    const duration = 500; // 5 mili-seconds animation // maybe 300
+    const steps = 120; // Number of update steps for smooth animation // maybe 60
     const stepDuration = duration / steps;
     const increment = end / steps;
 

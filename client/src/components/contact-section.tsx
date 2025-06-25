@@ -73,8 +73,8 @@ export function ContactSection() {
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 ">
                 {/* Underline */}
                 <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
-                  Book Your{" "}
-                  <span className="brand-gray">Photography Session</span>
+                  BOOK YOUR{" "}
+                  <span className="brand-gray">PHOTOGRAPHY SESSION</span>
                 </span>
               </h2>
               <p className="text-lg brand-gray mb-8 leading-relaxed">
@@ -146,7 +146,7 @@ export function ContactSection() {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4 text-center">
                 {/* Underline */}
                 <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
-                  Get In Touch
+                  GET IN TOUCH
                 </span>
               </h2>
 
