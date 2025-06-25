@@ -73,15 +73,9 @@ export function ContactSection() {
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 ">
                 {/* Underline */}
                 <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
-                  BOOK YOUR{" "}
-                  <span className="brand-gray">PHOTOGRAPHY SESSION</span>
+                  BOOK <span className="brand-gray">PHOTOGRAPHY SESSION</span>
                 </span>
               </h2>
-              <p className="text-lg brand-gray mb-8 leading-relaxed">
-                Ready to capture your vision? Whether you want to book a full
-                photography session or just discuss your project, we've got you
-                covered. Reach out to us using the details below.
-              </p>
 
               {/* Contact Details */}
               <div className="space-y-6 mb-8">
@@ -127,12 +121,33 @@ export function ContactSection() {
               </div>
 
               {/* Business Hours */}
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <h3 className="brand-gray font-semibold mb-3">
-                  Mon - Fri : 09:00 - 18:00 / Sat - Sun : 10:00 - 16:00
+                  Business Hours
                 </h3>
+                <table className="table-auto border-collapse text-left mx-auto">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-2">Day</th>
+                      <th className="px-4 py-2">Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border-t px-4 py-2">Mon - Fri</td>
+                      <td className="border-t px-4 py-2">09:00 - 18:00</td>
+                    </tr>
+                    <tr>
+                      <td className="border-t px-4 py-2">Sat - Sun</td>
+                      <td className="border-t px-4 py-2">10:00 - 16:00</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-
+              <p className="text-lg brand-gray mb-8 leading-relaxed">
+                Ready to capture your vision? We've got you covered. Reach out
+                to us using the details below.
+              </p>
               {/* Address */}
               <div>
                 <p className="brand-gray mb-2">Etive Studio —</p>

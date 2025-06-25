@@ -60,8 +60,8 @@ export function VisualNarrativesSection() {
       </div>
 
       {/* Full-width horizontal banner */}
-      <div className="relative z-30 w-full bg-brand-red text-white py-6 text-center">
-        <span className="text-lg font-semibold uppercase tracking-wide">
+      <div className="relative z-30 w-full bg-brand-red text-white py-3 text-center">
+        <span className="text-base font-semibold uppercase tracking-wide">
           LET'S MAKE A SCENE
         </span>
       </div>

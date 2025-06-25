@@ -1,11 +1,11 @@
-import { SiFacebook, SiInstagram, SiYoutube, SiLinkedin } from 'react-icons/si';
+import { SiFacebook, SiInstagram, SiYoutube, SiLinkedin } from "react-icons/si";
 
 export function Footer() {
   const socialLinks = [
-    { icon: SiFacebook, href: '#', label: 'Facebook' },
-    { icon: SiInstagram, href: '#', label: 'Instagram' },
-    { icon: SiYoutube, href: '#', label: 'YouTube' },
-    { icon: SiLinkedin, href: '#', label: 'LinkedIn' },
+    { icon: SiFacebook, href: "#", label: "Facebook" },
+    { icon: SiInstagram, href: "#", label: "Instagram" },
+    { icon: SiYoutube, href: "#", label: "YouTube" },
+    { icon: SiLinkedin, href: "#", label: "LinkedIn" },
   ];
 
   return (
@@ -14,12 +14,14 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Copyright */}
           <div className="mb-6 md:mb-0">
-            <h3 className="font-display text-2xl font-bold mb-2 text-brand-black">Etive Studio</h3>
+            <h3 className="font-display text-3xl font-bold mb-2 text-brand-black">
+              Etive Studio
+            </h3>
             <p className="text-gray-600 text-sm">
               © 2024 Etive Studio. All rights reserved.
             </p>
           </div>
-          
+
           {/* Social Media Links */}
           <div className="flex space-x-6">
             {socialLinks.map((social) => {

@@ -58,7 +58,7 @@ export function Navigation({ activeSection }: NavigationProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <h1 className="font-display text-2xl font-bold text-white">
+              <h1 className="font-display text-3xl font-bold text-white">
                 Etive Studio
               </h1>
             </div>

@@ -56,7 +56,7 @@ export function PortfolioSection() {
           {portfolioItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-black"
+              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-transform transform-gpu duration-300 cursor-pointer bg-black hover:scale-105"
               onClick={() => openYouTubeVideo(item.youtubeId)}
             >
               <div className="aspect-video relative">
