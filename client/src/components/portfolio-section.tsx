@@ -3,31 +3,31 @@ import { ExternalLink } from "lucide-react";
 const portfolioItems = [
   {
     id: 1,
-    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
-    title: "Wedding Photography Showcase",
-    category: "Wedding",
-    description: "Beautiful wedding moments captured",
+    youtubeId: "Dna_GeK2gUU", // Replace with your actual YouTube video ID
+    title: "Kincrest - The Gift of Memories",
+    category: "Services",
+    description: "A heartfelt message showcasing appreciation to life.",
   },
   {
     id: 2,
-    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
-    title: "Corporate Photography Portfolio",
-    category: "Corporate",
-    description: "Professional corporate photography",
+    youtubeId: "GTXT-3vWeII", // Replace with your actual YouTube video ID
+    title: "Bladestar Renewables",
+    category: "Energy",
+    description: "Video showcasing work at the Bladestar turbines.",
   },
   {
     id: 3,
-    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
-    title: "Fashion Photography Collection",
-    category: "Fashion",
-    description: "Creative fashion photography sessions",
+    youtubeId: "_Jdu7LDRtTo", // Replace with your actual YouTube video ID
+    title: "Alcohol Companies Collection",
+    category: "Alcohol",
+    description: "Targeted alcohol videography sessions",
   },
   {
     id: 4,
-    youtubeId: "dQw4w9WgXcQ", // Replace with your actual YouTube video ID
-    title: "Event Photography Highlights",
-    category: "Events",
-    description: "Memorable event photography",
+    youtubeId: "Bix3EpNUeq4", // Replace with your actual YouTube video ID
+    title: "Count Clays Shooting Academy Highlights",
+    category: "Sports",
+    description: "Showcasing a day of shooting and field sports.",
   },
 ];
 
@@ -73,7 +73,6 @@ export function PortfolioSection() {
               {/* Overlay with video info */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
                 <div className="text-white">
-                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
                   <p className="text-sm text-gray-200 mb-2">
                     {item.description}
                   </p>

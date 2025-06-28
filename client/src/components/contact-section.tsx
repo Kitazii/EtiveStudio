@@ -248,6 +248,7 @@ export function ContactSection() {
                         }
                         className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                       />
+                      {/*Use the react-google-recaptcha library, implement this once I launch to production*/}
                       <label htmlFor="captcha" className="text-sm brand-gray">
                         I'm not a robot (reCAPTCHA verification)
                       </label>
