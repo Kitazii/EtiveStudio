@@ -47,7 +47,7 @@ export function PortfolioSection() {
             </h2>
           </span>
           <p className="text-lg brand-gray">
-            Explore our recent photography and video projects on YouTube
+            Explore our video projects on YouTube
           </p>
         </div>
 
@@ -63,7 +63,8 @@ export function PortfolioSection() {
                 <iframe
                   src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1&showinfo=0`}
                   title={item.title}
-                  className="w-full h-full rounded-xl"
+                  className="w-full h-full rounded-xl filter-none"
+                  style={{ minWidth: "113%", height: "100%" }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"
