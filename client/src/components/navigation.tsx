@@ -58,9 +58,9 @@ export function Navigation({ activeSection }: NavigationProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="@assets/ETIVE STUDIO WHITE_1751492571603.png" 
-                alt="Etive Studio" 
+              <img
+                src="/attached_assets/ETIVE STUDIO WHITE_1751492571603.png"
+                alt="Etive Studio"
                 className="h-8 w-auto"
               />
             </div>
@@ -136,9 +136,9 @@ export function Navigation({ activeSection }: NavigationProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="@assets/ETIVE STUDIO_1751492571603.png" 
-                alt="Etive Studio" 
+              <img
+                src="/attached_assets/ETIVE STUDIO_1751492571603.png"
+                alt="Etive Studio"
                 className="h-8 w-auto"
               />
             </div>
