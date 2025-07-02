@@ -37,6 +37,9 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Serve static files from attached_assets directory
+  app.use('/attached_assets', express.static('attached_assets'));
+  
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
