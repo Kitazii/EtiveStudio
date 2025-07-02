@@ -59,7 +59,7 @@ export function Navigation({ activeSection }: NavigationProps) {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="/attached_assets/ETIVE STUDIO WHITE_1751492571603.png"
+                src="/attached_assets/ETIVE%20STUDIO%20WHITE_1751492571603.png"
                 alt="Etive Studio"
                 className="h-8 w-auto"
               />
@@ -137,7 +137,7 @@ export function Navigation({ activeSection }: NavigationProps) {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="/attached_assets/ETIVE STUDIO_1751492571603.png"
+                src="/attached_assets/ETIVE%20STUDIO_1751492571603.png"
                 alt="Etive Studio"
                 className="h-8 w-auto"
               />

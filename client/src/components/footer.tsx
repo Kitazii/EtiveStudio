@@ -15,7 +15,7 @@ export function Footer() {
           {/* Logo and Copyright */}
           <div className="mb-6 md:mb-0">
             <img 
-              src="/attached_assets/ETIVE STUDIO_1751492571603.png" 
+              src="/attached_assets/ETIVE%20STUDIO_1751492571603.png" 
               alt="Etive Studio" 
               className="h-8 w-auto mb-2"
             />
