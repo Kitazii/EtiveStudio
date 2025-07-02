@@ -17,7 +17,7 @@ export function Footer() {
             <img 
               src="/attached_assets/ETIVE%20STUDIO_1751492571603.png" 
               alt="Etive Studio" 
-              className="h-8 w-auto mb-2"
+              className="h-12 w-auto mb-2"
             />
             <p className="text-gray-600 text-sm">
               © 2024 Etive Studio. All rights reserved.
