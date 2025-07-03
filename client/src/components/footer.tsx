@@ -17,8 +17,7 @@ export function Footer() {
             <img
               src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
               alt="Etive Studio"
-              className="h-72 w-auto"
-              style={{ marginTop: "-100px", marginBottom: "-100px" }}
+              className="h-6 w-auto mx-8 mb-6"
             />
             <p className="text-gray-600 text-sm mx-5">
               © 2024 Etive Studio. All rights reserved.
@@ -26,7 +25,7 @@ export function Footer() {
           </div>
 
           {/* Social Media Links */}
-          <div className="flex space-x-6" style={{ marginBottom: "-70px" }}>
+          <div className="flex space-x-6" style={{ marginBottom: "-60px" }}>
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (

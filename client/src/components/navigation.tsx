@@ -139,7 +139,7 @@ export function Navigation({ activeSection }: NavigationProps) {
               <img
                 src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
                 alt="Etive Studio"
-                className="h-72 w-auto mt-7"
+                className="h-6 w-auto mt-3"
               />
             </div>
 
