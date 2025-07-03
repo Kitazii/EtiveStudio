@@ -15,7 +15,7 @@ export function Footer() {
           {/* Logo and Copyright */}
           <div className="mb-6 md:mb-0 ">
             <img
-              src="/attached_assets/ETIVE%20STUDIO_1751492571603.png"
+              src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
               alt="Etive Studio"
               className="h-72 w-auto"
               style={{ marginTop: "-100px", marginBottom: "-100px" }}
