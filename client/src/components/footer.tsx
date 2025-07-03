@@ -13,19 +13,20 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Copyright */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 ">
             <img
               src="/attached_assets/ETIVE%20STUDIO_1751492571603.png"
               alt="Etive Studio"
-              className="h-56 w-auto mb-2"
+              className="h-72 w-auto"
+              style={{ marginTop: "-100px", marginBottom: "-100px" }}
             />
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-sm mx-5">
               © 2024 Etive Studio. All rights reserved.
             </p>
           </div>
 
           {/* Social Media Links */}
-          <div className="flex space-x-6">
+          <div className="flex space-x-6" style={{ marginBottom: "-70px" }}>
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
