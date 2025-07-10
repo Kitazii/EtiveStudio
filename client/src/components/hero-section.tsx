@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -11,6 +11,23 @@ export function HeroSection() {
     }
   };
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Preload the video for smoother playback
+      video.preload = 'auto';
+      
+      // Handle loop manually to prevent stuttering
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.play();
+      });
+
+      // Ensure video starts playing
+      video.play().catch(console.error);
+    }
+  }, []);
+
   return (
     <section id="home" className="relative h-screen overflow-hidden">
       {/* Video Background */}
@@ -19,8 +36,10 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         muted
-        loop
         playsInline
+        preload="auto"
+        webkit-playsinline="true"
+        x-webkit-airplay="allow"
       >
         <source
           src="/attached_assets/homepage%20video_1752151273788.mp4"
