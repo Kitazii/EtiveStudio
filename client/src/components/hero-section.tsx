@@ -23,7 +23,7 @@ export function HeroSection() {
         playsInline
       >
         <source
-          src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+          src="/attached_assets/homepage%20video_1752151273788.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
