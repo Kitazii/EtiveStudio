@@ -165,7 +165,7 @@ export function AboutSection() {
               {/* Image Card */}
               <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square">
                 <img
-                  src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  src="/attached_assets/Etive_1_1752237970702.JPG"
                   alt="Professional photography equipment"
                   className="w-full h-full object-cover filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
                 />
