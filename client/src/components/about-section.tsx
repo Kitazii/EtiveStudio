@@ -99,7 +99,7 @@ export function AboutSection() {
           <div className="order-2 lg:order-1 relative">
             <img
               ref={imageRef}
-              src="https://images.unsplash.com/photo-1672950273686-0b02667f96aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+              src="/attached_assets/Etive_1_1752237970702.JPG"
               alt="Professional photographer at work"
               className={`lazy-load rounded-xl shadow-2xl w-full h-auto transition-opacity duration-300 ${
                 isLoaded ? "loaded" : ""
@@ -165,7 +165,7 @@ export function AboutSection() {
               {/* Image Card */}
               <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square">
                 <img
-                  src="/attached_assets/Etive_1_1752237970702.JPG"
+                  src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
                   alt="Professional photography equipment"
                   className="w-full h-full object-cover filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
                 />
