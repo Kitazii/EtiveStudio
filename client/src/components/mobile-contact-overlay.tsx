@@ -17,7 +17,10 @@ export function MobileContactOverlay() {
 
   const handleDirections = () => {
     // Opens default maps app with business location
-    window.open("https://maps.google.com/?q=Etive+Studio+Photography+Glasgow", "_blank");
+    window.open(
+      "https://maps.google.com/?q=Etive+Studio+Photography+Glasgow",
+      "_blank",
+    );
   };
 
   const handleSMS = () => {

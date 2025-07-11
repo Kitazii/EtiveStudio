@@ -28,16 +28,15 @@ export function VisualNarrativesSection() {
       <div
         className="absolute inset-0 w-full h-[110%] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:
-            "url('/attached_assets/London_1752238686588.PNG')",
+          backgroundImage: "url('/attached_assets/London_1752238686588.PNG')",
           transform: `translateY(${parallaxOffset * 0.3}px)`,
-          top: "5%",
+          top: "2.5%",
         }}
         aria-hidden
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/80 z-10"></div>
+      <div className="absolute inset-0 bg-black/75 z-10"></div>
 
       {/* Red geometric overlays */}
       <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-brand-red/80 to-transparent z-20"></div>

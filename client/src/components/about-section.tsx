@@ -96,7 +96,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="order-2 lg:order-1 relative mt-12">
+          <div className="order-2 lg:order-1 relative mt-10">
             <img
               ref={imageRef}
               src="/attached_assets/Etive_1_1752237970702.JPG"
@@ -131,9 +131,7 @@ export function AboutSection() {
             </div>
             <p className="text-lg brand-gray mb-8">
               Our passion lies in capturing authentic moments and transforming
-              them into powerful stories that resonate with audiences. From
-              corporate headshots to brand campaigns, we bring technical
-              expertise and creative vision to every project.
+              them into powerful stories that resonate with audiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* 10+ Years Experience Card */}

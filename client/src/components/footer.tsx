@@ -13,7 +13,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Copyright */}
-          <div className="mb-6 md:mb-0 ">
+          <div className="mb-4 md:mb-0">
             <img
               src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
               alt="Etive Studio"
