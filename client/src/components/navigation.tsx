@@ -3,10 +3,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface NavigationProps {
-  activeSection: string;
+  scrollSpy: string;
 }
 
-export function Navigation({ activeSection }: NavigationProps) {
+export function Navigation({ scrollSpy }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrolledNav, setShowScrolledNav] = useState(false);
@@ -72,7 +72,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    activeSection === item.href.substring(1)
+                    scrollSpy === item.href.substring(1)
                       ? "text-red-500 border-b-2 border-red-500"
                       : "text-white hover:text-red-400"
                   }`}
@@ -109,7 +109,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                    activeSection === item.href.substring(1)
+                    scrollSpy === item.href.substring(1)
                       ? "text-red-400"
                       : "text-white hover:text-red-400"
                   }`}
@@ -150,7 +150,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    activeSection === item.href.substring(1)
+                    scrollSpy === item.href.substring(1)
                       ? "text-brand-red border-b-2 border-brand-red"
                       : "text-brand-black hover:text-brand-red"
                   }`}
@@ -187,7 +187,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                    activeSection === item.href.substring(1)
+                    scrollSpy === item.href.substring(1)
                       ? "text-brand-red"
                       : "text-brand-black hover:text-brand-red"
                   }`}
