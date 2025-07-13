@@ -2,10 +2,26 @@ import { SiFacebook, SiInstagram, SiYoutube, SiLinkedin } from "react-icons/si";
 
 export function Footer() {
   const socialLinks = [
-    { icon: SiFacebook, href: "#", label: "Facebook" },
-    { icon: SiInstagram, href: "#", label: "Instagram" },
-    { icon: SiYoutube, href: "#", label: "YouTube" },
-    { icon: SiLinkedin, href: "#", label: "LinkedIn" },
+    {
+      icon: SiFacebook,
+      href: "https://www.facebook.com/etivestudios",
+      label: "Facebook",
+    },
+    {
+      icon: SiInstagram,
+      href: "https://www.instagram.com/etivestudios/",
+      label: "Instagram",
+    },
+    {
+      icon: SiYoutube,
+      href: "https://www.youtube.com/@etivestudios6925",
+      label: "YouTube",
+    },
+    {
+      icon: SiLinkedin,
+      href: "https://www.linkedin.com/company/etive-creations/",
+      label: "LinkedIn",
+    },
   ];
 
   return (

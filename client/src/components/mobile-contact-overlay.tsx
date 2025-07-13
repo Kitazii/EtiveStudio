@@ -7,24 +7,22 @@ export function MobileContactOverlay() {
   // Only show on mobile devices
   if (!isMobile) return null;
 
+  //See if you can store values in objects and pass through as props, demonstrate this at meeting.
   const handleCall = () => {
-    window.location.href = "tel:+441234567890";
+    window.location.href = "tel:+447964873296";
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:hello@etivestudio.com";
+    window.location.href = "mailto:etivecreations@gmail.com";
   };
 
   const handleDirections = () => {
     // Opens default maps app with business location
-    window.open(
-      "https://maps.google.com/?q=Etive+Studio+Photography+Glasgow",
-      "_blank",
-    );
+    window.open("https://maps.google.com/?q=Glasgow+City+Centre", "_blank");
   };
 
   const handleSMS = () => {
-    window.location.href = "sms:+441234567890";
+    window.location.href = "sms:+447964873296";
   };
 
   return (
