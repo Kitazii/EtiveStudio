@@ -161,7 +161,7 @@ export function AboutSection() {
               </div>
 
               {/* Image Card */}
-              <div className="bg-brand-black rounded-xl overflow-hidden flex-1 aspect-square">
+              <div className="bg-brand-black rounded-xl overflow-hidden flex-1 md:aspect-square aspect-[2]">
                 <img
                   src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
                   alt="Married couple"

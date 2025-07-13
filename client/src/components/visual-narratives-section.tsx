@@ -30,7 +30,7 @@ export function VisualNarrativesSection() {
         style={{
           backgroundImage: "url('/attached_assets/London_1752238686588.PNG')",
           transform: `translateY(${parallaxOffset * 0.3}px)`,
-          top: "2.5%",
+          top: "3.0%",
         }}
         aria-hidden
       />
@@ -44,7 +44,7 @@ export function VisualNarrativesSection() {
       <div className="absolute top-6 left-6 w-8 h-8 border-2 border-white/50 rotate-45 z-20"></div>
 
       {/* Centered Content */}
-      <div className="relative z-30 flex-1 flex items-center justify-center py-10 md:py-16">
+      <div className="relative z-30 flex-1 flex items-center justify-center py-10 md:py-16 md:mt-12 mt-16">
         <div className="text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
             CRAFTING VISUAL
