@@ -9,15 +9,15 @@ export function HeroSection() {
     if (element) {
       // Check if we're on mobile by checking window width
       const isMobile = window.innerWidth < 768;
-      
+
       if (isMobile) {
         // On mobile, scroll past the mobile overlay (approximately 80px height)
         const elementTop = element.offsetTop;
         const offsetPosition = elementTop - 80;
-        
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       } else {
         // On desktop, use normal scroll behavior
@@ -30,10 +30,10 @@ export function HeroSection() {
     const video = videoRef.current;
     if (video) {
       // Preload the video for smoother playback
-      video.preload = 'auto';
-      
+      video.preload = "auto";
+
       // Handle loop manually to prevent stuttering
-      video.addEventListener('ended', () => {
+      video.addEventListener("ended", () => {
         video.currentTime = 0;
         video.play();
       });
