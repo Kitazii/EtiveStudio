@@ -7,9 +7,12 @@ import { VisualNarrativesSection } from "@/components/visual-narratives-section"
 import { PortfolioSection } from "@/components/portfolio-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
+
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { useContactOffset } from "@/hooks/use-contact-offset";
 
 export default function Home() {
+  const contactOffset = useContactOffset();
   const scrollSpy = useScrollSpy([
     "home",
     "about",
@@ -21,7 +24,7 @@ export default function Home() {
   return (
     <div className="min-h-screen pb-20 md:pb-0">
       <Navigation scrollSpy={scrollSpy} />
-      <HeroSection />
+      <HeroSection contactOffset={contactOffset} />
       <AboutSection />
       <BrandsSection />
       <VisualNarrativesSection />

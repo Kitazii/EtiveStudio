@@ -1,26 +1,27 @@
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-export function HeroSection() {
+export function HeroSection({
+  contactOffset,
+}: {
+  contactOffset: number | null;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact") as HTMLElement;
     if (element) {
+      const topDiv = element.querySelector("#contact-content") as HTMLElement;
+
       // Check if we're on mobile by checking window width
       const isMobile = window.innerWidth < 768;
 
-      if (isMobile) {
-        // On mobile, scroll past the mobile overlay (approximately 80px height)
-        const elementTop = element.offsetTop;
-        const offsetPosition = elementTop - 80;
-
+      if (isMobile && contactOffset !== null) {
         window.scrollTo({
-          top: offsetPosition,
+          top: contactOffset,
           behavior: "smooth",
         });
       } else {
-        // On desktop, use normal scroll behavior
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
