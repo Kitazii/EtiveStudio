@@ -5,7 +5,7 @@ export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToContact = () => {
-    const element = document.querySelector("#contact");
+    const element = document.querySelector("#contact") as HTMLElement;
     if (element) {
       // Check if we're on mobile by checking window width
       const isMobile = window.innerWidth < 768;
