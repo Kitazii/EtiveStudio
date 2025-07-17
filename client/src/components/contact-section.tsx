@@ -18,6 +18,9 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
+import { CONTACT_LINKS } from "@/components/models/contact";
+import { formatPhoneDisplay } from "@/components/utils/formatters";
+
 export function ContactSection() {
   const [captchaChecked, setCaptchaChecked] = useState(false);
   const { toast } = useToast();
@@ -97,7 +100,7 @@ export function ContactSection() {
                       d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
                     />
                   </svg>
-                  <span className="brand-gray">(+44) 7964873296</span>
+                  <span className="brand-gray">{formatPhoneDisplay(CONTACT_LINKS.phone)}</span>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
                   <svg
