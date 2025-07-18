@@ -1,6 +1,9 @@
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+import { CONTACT_LINKS } from "@/components/models/contact";
+import { Formatters } from "@/components/utils/formatters";
+
 export function MobileContactOverlay() {
   const isMobile = useIsMobile();
 
@@ -9,7 +12,7 @@ export function MobileContactOverlay() {
 
   //See if you can store values in objects and pass through as props, demonstrate this at meeting.
   const handleCall = () => {
-    window.location.href = "tel:+447964873296";
+    window.location.href = Formatters.phoneToTelLink(CONTACT_LINKS.phone);
   };
 
   const handleEmail = () => {

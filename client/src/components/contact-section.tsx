@@ -19,7 +19,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
 import { CONTACT_LINKS } from "@/components/models/contact";
-import { formatPhoneDisplay } from "@/components/utils/formatters";
+import { Formatters } from "@/components/utils/formatters";
 
 export function ContactSection() {
   const [captchaChecked, setCaptchaChecked] = useState(false);
@@ -100,7 +100,7 @@ export function ContactSection() {
                       d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
                     />
                   </svg>
-                  <span className="brand-gray">{formatPhoneDisplay(CONTACT_LINKS.phone)}</span>
+                  <span className="brand-gray">{Formatters.formatPhoneDisplay(CONTACT_LINKS.phone)}</span>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
                   <svg
@@ -119,7 +119,7 @@ export function ContactSection() {
                       d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"
                     />
                   </svg>
-                  <span className="brand-gray">etivecreations@gmail.com</span>
+                  <span className="brand-gray">{CONTACT_LINKS.email}</span>
                 </div>
               </div>
 
@@ -154,7 +154,7 @@ export function ContactSection() {
               {/* Address */}
               <div>
                 <p className="brand-gray mb-2">Etive Studio —</p>
-                <p className="brand-gray">Glasgow, United Kingdom.</p>
+                <p className="brand-gray">{CONTACT_LINKS.address}</p>
               </div>
             </div>
 
