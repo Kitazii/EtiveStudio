@@ -30,8 +30,8 @@ if (!ip) {
 const envPath = path.join(__dirname, "..", ".env");
 let envContent = "";
 if (fs.existsSync(envPath)) {
-  envContent = fs.readFileSync(envPath, "utf8");
-  envContent = envContent.replace(/^LOCAL_IP=.*$/m, "");
+  envContent = fs.readFileSync(envPath, "utf8").replace(/\r\n/g, "\n").trim();
+  envContent = envContent.replace(/^LOCAL_IP=.*$/m, "").trim();
 }
 envContent += `\nLOCAL_IP=${ip}\n`;
 fs.writeFileSync(envPath, envContent.trim() + "\n");

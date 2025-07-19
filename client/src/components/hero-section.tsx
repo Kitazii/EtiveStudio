@@ -70,7 +70,7 @@ export function HeroSection({
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center text-center text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-6xl font-bold mb-6">
             CAPTURING MOMENTS,
             <br />
             <span className="text-red-500">CREATING STORIES</span>
