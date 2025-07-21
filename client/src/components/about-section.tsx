@@ -133,7 +133,7 @@ export function AboutSection() {
               Our passion lies in capturing authentic moments and transforming
               them into powerful stories that resonate with audiences.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 md:h-[150px]">
               {/* 10+ Years Experience Card */}
               <div className="bg-gray-200 text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
@@ -161,11 +161,12 @@ export function AboutSection() {
               </div>
 
               {/* Image Card */}
-              <div className="bg-brand-black rounded-xl overflow-hidden flex-1 md:aspect-square aspect-[2]">
+              <div className="bg-brand-black rounded-xl overflow-hidden md:flex-[1.2] aspect-[2]">
                 <img
-                  src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
-                  alt="Married couple"
-                  className="w-full h-full object-cover filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
+                  src="/attached_assets/Lighthouse.png"
+                  alt="Lighthouse"
+                  className="w-full h-full object-cover md:object-fill filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
+                  style={{ objectPosition: "center 30%" }}
                 />
               </div>
             </div>
