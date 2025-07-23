@@ -124,7 +124,7 @@ export function AboutSection() {
                 W
               </div>
               <p className="text-lg brand-gray">
-                ith over a decade of experience in professional photography,
+                ith over a decade of experience in professional videography,
                 Etive Studio specializes in creating compelling visual
                 narratives for brands, events, and creative projects.
               </p>

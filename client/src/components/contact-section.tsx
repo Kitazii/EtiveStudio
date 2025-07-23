@@ -76,7 +76,7 @@ export function ContactSection() {
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 ">
                 {/* Underline */}
                 <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
-                  BOOK <span className="brand-gray">PHOTOGRAPHY SESSION</span>
+                  BOOK <span className="brand-gray">VIDEOGRAPHY SESSION</span>
                 </span>
               </h2>
 
