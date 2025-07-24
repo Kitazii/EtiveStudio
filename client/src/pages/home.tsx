@@ -27,7 +27,7 @@ export default function Home() {
       <HeroSection contactOffset={contactOffset} />
       <AboutSection />
       <BrandsSection />
-      <VisualNarrativesSection />
+      <VisualNarrativesSection contactOffset={contactOffset} />
       <PortfolioSection />
       <ContactSection />
       <Footer />

@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import {scrollToContact} from "@/components/utils/scroll-to-contact";
 
-export function VisualNarrativesSection() {
+export function VisualNarrativesSection({
+  contactOffset,
+}: {
+  contactOffset: number | null;
+}) {
   const [parallaxOffset, setParallaxOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -59,11 +64,19 @@ export function VisualNarrativesSection() {
       </div>
 
       {/* Full-width horizontal banner */}
-      <div className="relative z-30 w-full bg-brand-red text-white py-3 text-center">
+      {/* <div className="relative z-30 w-full bg-brand-red text-white py-3 text-center">
         <span className="text-base font-semibold uppercase tracking-wide">
           LET'S MAKE A SCENE
         </span>
-      </div>
+      </div> */}
+      <button
+        onClick={() => scrollToContact(contactOffset)}
+        className="relative z-30 w-full bg-brand-red text-white py-3 text-center text-base font-semibold uppercase tracking-wide
+          hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-red"
+        type="button"
+      >
+        LET'S MAKE A SCENE
+    </button>
     </section>
   );
 }

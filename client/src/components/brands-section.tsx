@@ -1,8 +1,8 @@
 const brandLogos = [
   {
     id: 1,
-    src: "https://logo.clearbit.com/amazon.com",
-    alt: "Amazon",
+    src: "https://logo.clearbit.com/adidas.com",
+    alt: "Adidas",
   },
   {
     id: 2,

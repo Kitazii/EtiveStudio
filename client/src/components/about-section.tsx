@@ -96,36 +96,34 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="order-2 lg:order-1 relative mt-10 hidden md:block">
-            <img
-              ref={imageRef}
-              src="/attached_assets/Etive_1_1752237970702.JPG"
-              alt="Etive Studio City Photo"
-              className={`lazy-load rounded-xl shadow-2xl w-full h-auto transition-opacity duration-300 ${
-                isLoaded ? "loaded" : ""
-              }`}
-            />
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+          <div className="order-2 lg:order-1 relative hidden md:block md:me-10">
+            <div className="md:scale-[1.16]">
+              <img
+                ref={imageRef}
+                src="/attached_assets/Etive_1_1752237970702.JPG"
+                alt="Etive Studio City Photo"
+                className={`lazy-load rounded-xl shadow-2xl w-full h-auto transition-opacity duration-300 ${
+                  isLoaded ? "loaded" : ""
+                }`}
+              />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+            </div>
           </div>
-
           {/* Text */}
           <div className="order-1 lg:order-2">
             {/* Title Section */}
             <div className="text-left mb-8">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
                 <span className="inline-block border-b-4 border-brand-red pb-1">
-                  ABOUT <span className="brand-gray">ETIVE STUDIO</span>
+                  ABOUT <span className="brand-gray">ETIVE STUDIOS</span>
                 </span>
               </h2>
             </div>
             <div className="flex items-start">
-              <div className="text-6xl text-brand-black mr-2 w-[2.5em] leading-none">
-                W
-              </div>
               <p className="text-lg brand-gray">
-                ith over a decade of experience in professional videography,
-                Etive Studio specializes in creating compelling visual
+                With over a decade of experience in professional videography,
+                Etive Studios specialises in creating compelling visual
                 narratives for brands, events, and creative projects.
               </p>
             </div>
@@ -151,24 +149,14 @@ export function AboutSection() {
               <div className="bg-gray-200 text-white p-6 rounded-xl text-center flex flex-col items-center justify-center flex-1">
                 <div className="text-3xl font-bold text-white mb-2">
                   <AnimatedCounter
-                    end={500}
+                    end={1000}
                     suffix="+"
                     isVisible={isInView}
                     textColor="text-black"
                   />
                 </div>
                 <div className="text-sm text-gray-900">Projects Completed</div>
-              </div>
-
-              {/* Image Card */}
-              <div className="bg-brand-black rounded-xl overflow-hidden md:flex-[1.2] aspect-[2]">
-                <img
-                  src="/attached_assets/Lighthouse.png"
-                  alt="Lighthouse"
-                  className="w-full h-full object-cover md:object-fill filter sepia brightness-75 contrast-125 hue-rotate-[-10deg] saturate-150"
-                  style={{ objectPosition: "center 30%" }}
-                />
-              </div>
+              </div>             
             </div>
           </div>
         </div>

@@ -76,7 +76,7 @@ export function ContactSection() {
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 ">
                 {/* Underline */}
                 <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
-                  BOOK <span className="brand-gray">VIDEOGRAPHY SESSION</span>
+                  LET'S <span className="brand-gray">MAKE A SCENE</span>
                 </span>
               </h2>
 
@@ -153,7 +153,7 @@ export function ContactSection() {
               </p>
               {/* Address */}
               <div>
-                <p className="brand-gray mb-2">Etive Studio —</p>
+                <p className="brand-gray mb-2">Etive Studios Ltd —</p>
                 <p className="brand-gray">{CONTACT_LINKS.address}</p>
               </div>
             </div>

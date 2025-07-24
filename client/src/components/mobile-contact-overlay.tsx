@@ -3,6 +3,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 import { CONTACT_LINKS } from "@/components/models/contact";
 import { Formatters } from "@/components/utils/formatters";
+import { format } from "path";
+import { Form } from "react-hook-form";
 
 export function MobileContactOverlay() {
   const isMobile = useIsMobile();
@@ -16,7 +18,7 @@ export function MobileContactOverlay() {
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:etivecreations@gmail.com";
+    window.location.href = Formatters.emailToMailLink(CONTACT_LINKS.email);
   };
 
   const handleDirections = () => {
@@ -25,7 +27,7 @@ export function MobileContactOverlay() {
   };
 
   const handleSMS = () => {
-    window.location.href = "sms:+447964873296";
+    window.location.href = Formatters.phoneToSMSLink(CONTACT_LINKS.phone);
   };
 
   return (
