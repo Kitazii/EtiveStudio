@@ -36,7 +36,7 @@ export function Footer() {
               className="h-6 w-auto mx-8 mb-6"
             />
             <p className="text-gray-600 text-sm mx-5">
-              © 2024 Etive Studio. All rights reserved.
+              © {new Date().getFullYear()} Etive Studio. All rights reserved.
             </p>
           </div>
 

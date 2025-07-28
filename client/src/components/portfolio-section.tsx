@@ -173,29 +173,78 @@ return (
         {/* Carousel Container */}
         <div className="relative" onClick={handleSectionClick}>
           {/* Navigation Arrows */}
-          <button
-            onClick={prevPage}
-            disabled={currentPage === 0}
-            className={`absolute top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-3 shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
-              isMobile ? 'left-2' : 'left-0 -ml-6'
-            }`}
-          >
-            <ChevronLeft className="w-6 h-6 text-brand-black" />
-          </button>
-          <button
-            onClick={nextPage}
-            disabled={currentPage === totalPages - 1}
-            className={`absolute top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-200 rounded-full p-3 shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
-              isMobile ? 'right-2' : 'right-0 -mr-6'
-            }`}
-          >
-            <ChevronRight className="w-6 h-6 text-brand-black" />
-          </button>
+          {/* MOBILE: Full-Height Edge Buttons */}
+          {isMobile && (
+            <>
+              <button
+                onClick={prevPage}
+                disabled={currentPage === 0}
+                className={`
+                  absolute left-0 top-0 h-full w-14 flex items-center justify-center
+                  bg-white/40 hover:bg-white/70
+                  rounded-l-xl
+                  z-20
+                  transition-all duration-200
+                  disabled:opacity-30 disabled:pointer-events-none
+                `}
+                style={{ maxHeight: "340px" }} // match your video card's max height if needed
+              >
+                <ChevronLeft className="w-8 h-8 text-brand-black drop-shadow-lg" />
+              </button>
+              <button
+                onClick={nextPage}
+                disabled={currentPage === totalPages - 1}
+                className={`
+                  absolute right-0 top-0 h-full w-14 flex items-center justify-center
+                  bg-white/40 hover:bg-white/70
+                  rounded-r-xl
+                  z-20
+                  transition-all duration-200
+                  disabled:opacity-30 disabled:pointer-events-none
+                `}
+                style={{ maxHeight: "340px" }} // match your video card's max height if needed
+              >
+                <ChevronRight className="w-8 h-8 text-brand-black drop-shadow-lg" />
+              </button>
+            </>
+          )}
+
+          {/* DESKTOP: Regular Circle Buttons */}
+          {!isMobile && (
+            <>
+              <button
+                onClick={prevPage}
+                disabled={currentPage === 0}
+                className={`
+                  absolute top-1/2 left-0 -translate-y-1/2 z-10 bg-white/90 hover:bg-white
+                  border border-gray-200 rounded-full p-3 shadow-lg
+                  transition-all duration-200
+                  disabled:opacity-50 disabled:cursor-not-allowed
+                  ${isMobile ? 'left-2' : 'left-0 md:-ml-6 lg:-ml-10 xl:-ml-20 -ml-4'}
+                `}
+              >
+                <ChevronLeft className="w-6 h-6 text-brand-black" />
+              </button>
+              <button
+                onClick={nextPage}
+                disabled={currentPage === totalPages - 1}
+                className={`
+                  absolute top-1/2 right-0 -translate-y-1/2 z-10 bg-white/90 hover:bg-white
+                  border border-gray-200 rounded-full p-3 shadow-lg
+                  transition-all duration-200
+                  disabled:opacity-50 disabled:cursor-not-allowed
+                  ${isMobile ? 'right-2' : 'right-0 md:-mr-6 lg:-mr-10 xl:-mr-20 -mr-4'}
+                `}
+              >
+                <ChevronRight className="w-6 h-6 text-brand-black" />
+              </button>
+            </>
+          )}
 
           {/* YouTube Video Gallery Grid */}
           <div 
             className={`grid gap-6 transition-all duration-300 ${
-              isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+              isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4 scale-110'
             }`}
             onTouchStart={isMobile ? handleTouchStart : undefined}
             onTouchMove={isMobile ? handleTouchMove : undefined}
