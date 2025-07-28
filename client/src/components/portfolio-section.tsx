@@ -162,7 +162,7 @@ return (
         <div className="text-center mb-12">
           <span className="inline-block border-b-4 border-brand-red pb-1 mb-10">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-4">
-              LATEST <span className="brand-gray">WORK</span>
+              OUR <span className="brand-gray">WORK</span>
             </h2>
           </span>
           <p className="text-lg brand-gray">
