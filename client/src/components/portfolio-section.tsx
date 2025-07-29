@@ -103,6 +103,37 @@ export function PortfolioSection() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [isMobile]); // or [videosPerPage]
 
+useEffect(() => {
+  if (!isMobile || activeVideoId === null) return;
+
+  function handleGlobalTouchOrClick(e : Event) {
+    // e.composedPath() is not on all Event types, so check for it
+    const path: EventTarget[] = (e as any).composedPath
+      ? (e as any).composedPath()
+      : [e.target as EventTarget];
+
+    // Check if any element in the path has the .video-card class
+    const clickedInsideCard = path.some((el) => {
+      // Only check for classList on Element nodes
+      return (el instanceof Element) && el.classList.contains("video-card");
+    });
+
+    if (!clickedInsideCard) {
+      setActiveVideoId(null);
+    }
+  }
+
+  // Listen for both touch and mouse (just in case)
+  document.addEventListener("touchend", handleGlobalTouchOrClick);
+  document.addEventListener("mousedown", handleGlobalTouchOrClick);
+
+  // Clean up
+  return () => {
+    document.removeEventListener("touchend", handleGlobalTouchOrClick);
+    document.removeEventListener("mousedown", handleGlobalTouchOrClick);
+  };
+}, [isMobile, activeVideoId]);
+
   const videosPerPage = isMobile ? 1 : 4; // 1 video on mobile, 4 on desktop
   const totalPages = Math.ceil(portfolioItems.length / videosPerPage);
 
@@ -147,13 +178,10 @@ export function PortfolioSection() {
     if (isRightSwipe && currentPage > 0) {
       prevPage();
     }
-  };
 
-  // Dismiss overlay if you tap background (on mobile)
-  const handleSectionClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (isMobile && (e.target as HTMLElement).closest('.video-card') === null) {
-      setActiveVideoId(null);
-    }
+    // Reset after swipe is handled
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
 return (
@@ -166,45 +194,43 @@ return (
             </h2>
           </span>
           <p className="text-lg brand-gray">
-            Explore our video projects on YouTube
+            Explore some of our recent projects on YouTube
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative" onClick={handleSectionClick}>
+        <div className="relative">
           {/* Navigation Arrows */}
           {/* MOBILE: Full-Height Edge Buttons */}
-          {isMobile && (
+          {isMobile && activeVideoId === null && (
             <>
               <button
                 onClick={prevPage}
                 disabled={currentPage === 0}
                 className={`
-                  absolute left-0 top-0 h-full w-14 flex items-center justify-center
-                  bg-white/40 hover:bg-white/70
-                  rounded-l-xl
+                  absolute top-1/4 left-0 flex items-center justify-center 
+                  bg-white/90 hover:bg-white
+                  border border-gray-200 rounded-full p-3 shadow-lg
                   z-20
                   transition-all duration-200
-                  disabled:opacity-30 disabled:pointer-events-none
+                  disabled:opacity-50 disabled:pointer-events-none
                 `}
-                style={{ maxHeight: "340px" }} // match your video card's max height if needed
               >
-                <ChevronLeft className="w-8 h-8 text-brand-black drop-shadow-lg" />
+                <ChevronLeft className="w-6 h-6 text-brand-black" />
               </button>
               <button
                 onClick={nextPage}
                 disabled={currentPage === totalPages - 1}
                 className={`
-                  absolute right-0 top-0 h-full w-14 flex items-center justify-center
-                  bg-white/40 hover:bg-white/70
-                  rounded-r-xl
+                  absolute top-1/4 right-0 flex items-center justify-center
+                  bg-white/90 hover:bg-white
+                  border border-gray-200 rounded-full p-3 shadow-lg
                   z-20
                   transition-all duration-200
-                  disabled:opacity-30 disabled:pointer-events-none
+                  disabled:opacity-50 disabled:pointer-events-none
                 `}
-                style={{ maxHeight: "340px" }} // match your video card's max height if needed
               >
-                <ChevronRight className="w-8 h-8 text-brand-black drop-shadow-lg" />
+                <ChevronRight className="w-6 h-6 text-brand-black" />
               </button>
             </>
           )}
@@ -299,9 +325,11 @@ return (
                         onClick={(e) => e.stopPropagation()} // Prevent closing overlay when interacting inside
                       >
                         <div className="text-white w-full">
-                          <p className="text-sm text-gray-200 mb-2">
-                            {item.description}
-                          </p>
+                          <div className="bg-black/60 rounded-lg px-3 py-2 mb-2">
+                            <p className="text-sm text-gray-100">
+                              {item.description}
+                            </p>
+                          </div>
                           <div className="flex items-center gap-2 mb-4">
                             <span className="px-2 py-1 bg-red-600 text-xs font-medium rounded">
                               {item.category}
@@ -343,9 +371,11 @@ return (
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
                     <div className="text-white">
-                      <p className="text-sm text-gray-200 mb-2">
-                        {item.description}
-                      </p>
+                      <div className="bg-black/60 rounded-lg px-3 py-2 mb-2">
+                        <p className="text-sm text-gray-100">
+                          {item.description}
+                        </p>
+                      </div>
                       <div className="flex items-center gap-2">
                         <span className="px-2 py-1 bg-red-600 text-xs font-medium rounded">
                           {item.category}
