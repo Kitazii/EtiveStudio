@@ -5,12 +5,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { MobileContactOverlay } from "@/components/mobile-contact-overlay";
 import Home from "@/pages/home";
+import StillsPage from "@/pages/stills";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/stills" component={StillsPage} />
       <Route component={NotFound} />
     </Switch>
   );

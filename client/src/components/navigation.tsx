@@ -1,25 +1,34 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 interface NavigationProps {
   scrollSpy: string;
+  forceScrolledState?: boolean;
 }
 
-export function Navigation({ scrollSpy }: NavigationProps) {
+export function Navigation({ scrollSpy, forceScrolledState = false }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrolledNav, setShowScrolledNav] = useState(false);
+  const [location, navigate] = useLocation();
 
   const navItems = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#brands", label: "Trusted Brands" },
     { href: "#portfolio", label: "Portfolio" },
+    { href: "/stills", label: "Stills", isRoute: true },
     { href: "#contact", label: "Contact" },
   ];
 
   useEffect(() => {
+    if (forceScrolledState) {
+      setIsScrolled(true);
+      setShowScrolledNav(true);
+      return;
+    }
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const shouldBeScrolled = scrollY > 50;
@@ -36,14 +45,40 @@ export function Navigation({ scrollSpy }: NavigationProps) {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolled]);
+  }, [isScrolled, forceScrolledState]);
+
+  const handleNavigation = (href: string, isRoute: boolean) => {
+    if (isRoute) {
+      if (location === href) {
+        // If already on the route, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Navigate to the route and scroll to top
+        navigate(href);
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      // If we're not on home page, go to home first
+      if (location !== "/") {
+        navigate("/");
+        // Small delay to allow page to load before scrolling
+        setTimeout(() => scrollToSection(href), 100);
+      } else {
+        scrollToSection(href);
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMobileMenuOpen(false);
+    // setIsMobileMenuOpen(false);
   };
 
   return (
@@ -70,9 +105,10 @@ export function Navigation({ scrollSpy }: NavigationProps) {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item.href, !!item.isRoute)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    scrollSpy === item.href.substring(1)
+                    (item.isRoute && location === item.href) || 
+                    (!item.isRoute && scrollSpy === item.href.substring(1))
                       ? "text-red-500 border-b-2 border-red-500"
                       : "text-white hover:text-red-400"
                   }`}
@@ -148,9 +184,10 @@ export function Navigation({ scrollSpy }: NavigationProps) {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item.href, !!item.isRoute)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    scrollSpy === item.href.substring(1)
+                    (item.isRoute && location === item.href) || 
+                    (!item.isRoute && scrollSpy === item.href.substring(1))
                       ? "text-brand-red border-b-2 border-brand-red"
                       : "text-brand-black hover:text-brand-red"
                   }`}
@@ -185,9 +222,10 @@ export function Navigation({ scrollSpy }: NavigationProps) {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item.href, !!item.isRoute)}
                   className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                    scrollSpy === item.href.substring(1)
+                    (item.isRoute && location === item.href) || 
+                    (!item.isRoute && scrollSpy === item.href.substring(1))
                       ? "text-brand-red"
                       : "text-brand-black hover:text-brand-red"
                   }`}
