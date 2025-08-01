@@ -47,6 +47,14 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isScrolled, forceScrolledState]);
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    // setIsMobileMenuOpen(false);
+  };
+
   const handleNavigation = (href: string, isRoute: boolean) => {
     if (isRoute) {
       if (location === href) {
@@ -73,17 +81,11 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
     setIsMobileMenuOpen(false);
   };
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    // setIsMobileMenuOpen(false);
-  };
+  
 
   return (
     <>
-      {/* Transparent Navigation (Hero Section) */}
+      {/* ---------Transparent Navigation (Hero Section) ----------- */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -143,7 +145,7 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item.href, !!item.isRoute)}
                   className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
                     scrollSpy === item.href.substring(1)
                       ? "text-red-400"
@@ -158,7 +160,7 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
         )}
       </nav>
 
-      {/* White Navigation (Scrolled State) */}
+      {/* -----White Navigation (Scrolled State) ---------*/}
       <nav
         className={`fixed left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 transition-all duration-300 ${
           isScrolled
