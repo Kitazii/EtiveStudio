@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMobileDevice } from "@/hooks/use-mobile";
 
 import { CONTACT_LINKS } from "@/components/models/contact";
 import { Formatters } from "@/components/utils/formatters";
@@ -7,7 +7,7 @@ import { format } from "path";
 import { Form } from "react-hook-form";
 
 export function MobileContactOverlay() {
-  const isMobile = useIsMobile();
+  const isMobile = useMobileDevice();
 
   // Only show on mobile devices
   if (!isMobile) return null;

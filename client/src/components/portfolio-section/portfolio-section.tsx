@@ -1,96 +1,16 @@
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const portfolioItems = [
-  {
-    id: 1,
-    youtubeId: "Dna_GeK2gUU", // Replace with your actual YouTube video ID
-    title: "Kincrest - The Gift of Memories",
-    category: "Services",
-    description: "A heartfelt message showcasing appreciation to life.",
-  },
-  {
-    id: 2,
-    youtubeId: "GTXT-3vWeII", // Replace with your actual YouTube video ID
-    title: "Bladestar Renewables",
-    category: "Energy",
-    description: "Video showcasing work at the Bladestar turbines.",
-  },
-  {
-    id: 3,
-    youtubeId: "_Jdu7LDRtTo", // Replace with your actual YouTube video ID
-    title: "Alcohol Companies Collection",
-    category: "Alcohol",
-    description: "Targeted alcohol videography sessions",
-  },
-  {
-    id: 4,
-    youtubeId: "Bix3EpNUeq4", // Replace with your actual YouTube video ID
-    title: "Count Clays Shooting Academy Highlights",
-    category: "Sports",
-    description: "Showcasing a day of shooting and field sports.",
-  },
-  {
-    id: 5,
-    youtubeId: "dQw4w9WgXcQ",
-    title: "Corporate Event Coverage",
-    category: "Corporate",
-    description: "Professional event documentation and highlights.",
-  },
-  {
-    id: 6,
-    youtubeId: "9bZkp7q19f0",
-    title: "Wedding Photography Session",
-    category: "Wedding",
-    description: "Capturing precious moments on special day.",
-  },
-  {
-    id: 7,
-    youtubeId: "kJQP7kiw5Fk",
-    title: "Fashion Portrait Shoot",
-    category: "Fashion",
-    description: "Professional fashion and portrait photography.",
-  },
-  {
-    id: 8,
-    youtubeId: "hFZFjoX2cGg",
-    title: "Real Estate Showcase",
-    category: "Real Estate",
-    description: "Stunning property photography and videography.",
-  },
-  {
-    id: 9,
-    youtubeId: "y6120QOlsfU",
-    title: "Music Video Production",
-    category: "Music",
-    description: "Creative music video production and editing.",
-  },
-  {
-    id: 10,
-    youtubeId: "2Vv-BfVoq4g",
-    title: "Travel Documentary",
-    category: "Travel",
-    description: "Capturing the beauty of landscapes and culture.",
-  }
-];
+import { useIsMobileLayout } from "@/hooks/use-mobile";
+import { useSwipe } from "@/hooks/use-swipe";
+
+import { portfolioItems } from "./data/portfolioItems";
 
 export function PortfolioSection() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
   
-  // Check if screen is mobile/vertical
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const isMobile = useIsMobileLayout();
 
   useEffect(() => {
   const newVideosPerPage = isMobile ? 1 : 4;
@@ -157,32 +77,16 @@ useEffect(() => {
   );
 
   // Touch/swipe handlers for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe && currentPage < totalPages - 1) {
-      nextPage();
-    }
-    if (isRightSwipe && currentPage > 0) {
-      prevPage();
-    }
-
-    // Reset after swipe is handled
-    setTouchStart(0);
-    setTouchEnd(0);
-  };
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipe(
+  () => {
+    // Left swipe: Go to next page, only if not at last
+    if (currentPage < totalPages - 1) nextPage();
+  },
+  () => {
+    // Right swipe: Go to prev page, only if not at first
+    if (currentPage > 0) prevPage();
+  }
+);
 
 return (
     <section id="portfolio" className="py-16 md:py-24 bg-white min-h-[50vh]">

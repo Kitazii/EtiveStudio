@@ -63,12 +63,7 @@ export function VisualNarrativesSection({
         </div>
       </div>
 
-      {/* Full-width horizontal banner */}
-      {/* <div className="relative z-30 w-full bg-brand-red text-white py-3 text-center">
-        <span className="text-base font-semibold uppercase tracking-wide">
-          LET'S MAKE A SCENE
-        </span>
-      </div> */}
+      {/* Full-width horizontal banner/button */}
       <button
         onClick={() => scrollToContact(contactOffset)}
         className="relative z-30 w-full bg-brand-red text-white py-3 text-center text-base font-semibold uppercase tracking-wide
