@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useIsMobileLayout } from "@/hooks/use-mobile";
 import { useSwipe } from "@/hooks/use-swipe";
 
-import { portfolioItems } from "./data/portfolioItems";
+import { portfolioItems } from "@/components/portfolio-section/data/portfolioItems";
 
 export function PortfolioSection() {
   const [currentPage, setCurrentPage] = useState(0);

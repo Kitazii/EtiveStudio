@@ -107,7 +107,7 @@ export function AboutSection() {
                 }`}
               />
               {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-xl "></div>
             </div>
           </div>
           {/* Text */}

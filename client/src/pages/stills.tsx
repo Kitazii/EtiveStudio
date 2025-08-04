@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation/navigation";
+import { Footer } from "@/components/footer-section/footer";
 
 // Sample images for the carousel - in a real app these would come from your CMS/API
 const stillsImages = Array.from({ length: 30 }, (_, index) => ({

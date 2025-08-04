@@ -1,4 +1,4 @@
-export type ContactLinks = {
+export interface ContactLinks {
   phone: string;
   email: string;
   directions: string;

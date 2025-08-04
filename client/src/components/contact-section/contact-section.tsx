@@ -18,7 +18,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
-import { CONTACT_LINKS } from "@/components/models/contact";
+import { CONTACT_LINKS } from "@/components/contact-section/data/contact";
 import { Formatters } from "@/components/utils/formatters";
 
 export function ContactSection() {
