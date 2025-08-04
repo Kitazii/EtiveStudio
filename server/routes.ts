@@ -6,7 +6,27 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 import { CONTACT_LINKS } from "./models/contact";
 
+import fs from "fs/promises";
+import Handlebars from "handlebars";
+import path from "path";
+import { fileURLToPath } from "url";
+
+
+
 export async function registerRoutes(app: Express): Promise<Server> {
+
+  // derive __dirname just once at the top of the module
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  // cache the compiled template
+  const templateSource = await fs.readFile(
+    path.join(__dirname, "../server/email-templates/contact.html"),
+    "utf-8"
+  );
+
+  const compileContact = Handlebars.compile(templateSource);
+
   // Contact form submission
   app.post("/api/contacts", async (req, res) => {
     try {
@@ -24,6 +44,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         },
       });
 
+      const html = compileContact({
+        name: contactData.name,
+        email: contactData.email,
+        message: contactData.message.replace(/\n/g, "<br/>"),
+      });
+
       await transporter.sendMail({
         from: `"Website Contact" <${process.env.SMTP_USER}>`,
         to: CONTACT_LINKS.email, // or CONTACT_LINKS.email if imported
@@ -33,13 +59,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
           Email: ${contactData.email}
           Message: ${contactData.message}
         `,
+        html
+      ,
+      attachments: [
+        {
+          filename: "ETIVE_black_red_white_bg.png",
+          path: path.join(__dirname, "../attached_assets/ETIVE_black_red_white_bg.png"), // wherever your logo lives
+          cid: "logoBanner",                               // same as in the img src
+        },
+      ],
       });
 
       const contact = await storage.createContact(contactData);
       
       res.json({ success: true, contact });
     } catch (error) {
-       console.error("Email error:", error); // Add this line
+       console.error("Email error:", error);
       if (error instanceof z.ZodError) {
         res.status(400).json({ 
           success: false, 

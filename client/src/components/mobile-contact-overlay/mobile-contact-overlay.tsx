@@ -1,10 +1,10 @@
-import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { FaWhatsapp } from 'react-icons/fa';
+
 import { useMobileDevice } from "@/hooks/use-mobile";
 
 import { CONTACT_LINKS } from "@/components/contact-section/data/contact";
 import { Formatters } from "@/components/utils/formatters";
-import { format } from "path";
-import { Form } from "react-hook-form";
 
 export function MobileContactOverlay() {
   const isMobile = useMobileDevice();
@@ -26,8 +26,8 @@ export function MobileContactOverlay() {
     window.open("https://maps.google.com/?q=Glasgow+City+Centre", "_blank");
   };
 
-  const handleSMS = () => {
-    window.location.href = Formatters.phoneToSMSLink(CONTACT_LINKS.phone);
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/447964873296", "_blank");
   };
 
   return (
@@ -66,15 +66,15 @@ export function MobileContactOverlay() {
           <span className="text-xs text-gray-700 font-medium">DIR</span>
         </button>
 
-        {/* SMS Button */}
+        {/* WhatsApp Button */}
         <button
-          onClick={handleSMS}
+          onClick={handleWhatsApp}
           className="flex flex-col items-center justify-center py-2 px-4 active:bg-gray-100 transition-colors"
         >
           <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mb-1">
-            <MessageSquare className="w-5 h-5 text-white" />
+            <FaWhatsapp className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xs text-gray-700 font-medium">SMS</span>
+          <span className="text-xs text-gray-700 font-medium">WA</span>
         </button>
       </div>
     </div>

@@ -3,9 +3,9 @@ export const Formatters = {
     return `tel:${phone}`;
   },
 
-  phoneToSMSLink(phone: string) {
-    return `sms:${phone}`;
-  },
+  // phoneToSMSLink(phone: string) {
+  //   return `sms:${phone}`;
+  // },
 
   emailToMailLink(email: string) {
     return `mailto:${email}`;
