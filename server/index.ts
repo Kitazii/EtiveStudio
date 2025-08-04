@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+import { initializeMailer } from './services/mailer';
+import { registerRoutes } from "./routes/contactRoutes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
@@ -40,7 +41,8 @@ app.use((req, res, next) => {
 (async () => {
   // Serve static files from attached_assets directory
   app.use('/attached_assets', express.static('attached_assets'));
-  
+
+  await initializeMailer(); 
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
