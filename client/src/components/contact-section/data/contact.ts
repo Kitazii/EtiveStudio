@@ -7,7 +7,7 @@ export interface ContactLinks {
 
 export const CONTACT_LINKS: ContactLinks = {
   phone: "+447964873296",
-  email: "mr.kieranburns@gmail.com",
+  email: "etivecreations@gmail.com",
   directions: "https://maps.google.com/?q=Glasgow+City+Centre",
   address: "Glasgow, United Kingdom",
 };

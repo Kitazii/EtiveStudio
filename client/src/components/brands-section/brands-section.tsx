@@ -153,7 +153,7 @@ return (
                   <img
                     src={brand.src}
                     alt={brand.alt}
-                    className="h-10 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-10 md:h-14 lg:h-14 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                     onError={e => (e.currentTarget.style.display = "none")}
                   />
                 </div>
