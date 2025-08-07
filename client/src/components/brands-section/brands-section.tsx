@@ -4,62 +4,62 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const brandLogos = [
   {
     id: 1,
-    src: "https://logo.clearbit.com/adidas.co.uk",
+    src: "/attached_assets/client-logos/adidas.png",
     alt: "Adidas",
   },
   {
     id: 2,
-    src: "https://logo.clearbit.com/sgn.co.uk",
+    src: "/attached_assets/client-logos/SGN.png",
     alt: "SGN",
   },
   {
     id: 3,
-    src: "https://logo.clearbit.com/wrenkitchens.com",
+    src: "/attached_assets/client-logos/wren-kitchens.png",
     alt: "Wren Kitchens",
   },
   {
     id: 4,
-    src: "https://logo.clearbit.com/visitscotland.org",
+    src: "/attached_assets/client-logos/alba.png",
     alt: "Visi Scotland | Alba",
   },
   {
     id: 5,
-    src: "https://logo.clearbit.com/cyberenergia.com",
+    src: "/attached_assets/client-logos/cyber-energia.png",
     alt: "Cyber Energia",
   },
   {
     id: 6,
-    src: "https://logo.clearbit.com/bladestarrenewables.com",
+    src: "/attached_assets/client-logos/bladestar-renewables.png",
     alt: "Bladestar Renewables",
   },
   {
     id: 7,
-    src: "https://logo.clearbit.com/harley-davidson.com",
+    src: "/attached_assets/client-logos/harley-davidson.png",
     alt: "Harley Davidson",
   },
   {
     id: 8,
-    src: "https://logo.clearbit.com/bbc.co.uk",
+    src: "/attached_assets/client-logos/bbc.png",
     alt: "BBC",
   },
   {
     id: 9,
-    src: "https://logo.clearbit.com/hausofdentistry.com",
+    src: "/attached_assets/client-logos/HAUS-of-Dentistry.png",
     alt: "HAUS of Dentistry",
   },
   {
     id: 10,
-    src: "https://logo.clearbit.com/nwhgroup.co.uk",
+    src: "/attached_assets/client-logos/nwh-group.png",
     alt: "NWH Group",
   },
   {
     id: 11,
-    src: "https://logo.clearbit.com/adagio-city.com",
+    src: "/attached_assets/client-logos/Adagio.png",
     alt: "Adagio Hotels",
   },
   {
     id: 12,
-    src: "https://logo.clearbit.com/decathlon.co.uk",
+    src: "/attached_assets/client-logos/decathlon.png",
     alt: "Decathlon",
   },
 ];
@@ -153,7 +153,7 @@ return (
                   <img
                     src={brand.src}
                     alt={brand.alt}
-                    className="h-10 md:h-14 lg:h-14 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-14 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                     onError={e => (e.currentTarget.style.display = "none")}
                   />
                 </div>
@@ -189,7 +189,7 @@ return (
           </div>
         ) : (
           // Desktop: Grid
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-16 items-center justify-items-center">
             {brandLogos.map(brand => (
               <div
                 key={brand.id}
@@ -198,8 +198,14 @@ return (
                 <img
                   src={brand.src}
                   alt={brand.alt}
-                  className="h-10 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 ${brand.alt === "HAUS of Dentistry" || brand.alt === "NWH Group" ? "h-20" : "h-16"}`}
                   onError={e => (e.currentTarget.style.display = "none")}
+
+                  // className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 ${
+                  //   brand.alt === "HAUS of Dentistry" || brand.alt === "NWH Group" 
+                  //     ? "h-10 md:h-14 lg:h-16" 
+                  //     : "h-8 md:h-12 lg:h-14"
+                  // }`}
                 />
               </div>
             ))}
