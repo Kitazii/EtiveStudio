@@ -12,10 +12,13 @@ let contactTemplate: Handlebars.TemplateDelegate | null = null;
 
 // Call this once at app startup:
 export async function initializeMailer() {
-const templateSource = await fs.readFile(
-    path.join(__dirname, '../server/email-templates/contact.html'),
-    'utf-8'
-  );
+  const templatePath = path.resolve(
+      process.cwd(),           // → your project root
+      'server',
+      'email-templates',
+      'contact.html'
+    );
+  const templateSource = await fs.readFile(templatePath, 'utf-8');
   contactTemplate = Handlebars.compile(templateSource);
 }
 
@@ -65,7 +68,7 @@ export async function sendContactEmail(data: {
     attachments: [
       {
         filename: 'ETIVE_black_red_white_bg.png',
-        path: path.join(__dirname, '../attached_assets/ETIVE_black_red_white_bg.png'),
+        path: path.join(__dirname, '../../attached_assets/ETIVE_black_red_white_bg.png'),
         cid: 'logoBanner',
       },
     ],

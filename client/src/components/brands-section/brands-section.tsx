@@ -24,8 +24,8 @@ const brandLogos = [
   },
   {
     id: 5,
-    src: "/attached_assets/client-logos/cyber-energia.png",
-    alt: "Cyber Energia",
+    src: "/attached_assets/client-logos/Adagio.png",
+    alt: "Adagio Hotels",
   },
   {
     id: 6,
@@ -54,8 +54,8 @@ const brandLogos = [
   },
   {
     id: 11,
-    src: "/attached_assets/client-logos/Adagio.png",
-    alt: "Adagio Hotels",
+    src: "/attached_assets/client-logos/cyber-energia.png",
+    alt: "Cyber Energia",
   },
   {
     id: 12,
@@ -189,7 +189,7 @@ return (
           </div>
         ) : (
           // Desktop: Grid
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-16 items-center justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[5rem] items-center justify-items-center">
             {brandLogos.map(brand => (
               <div
                 key={brand.id}
@@ -198,14 +198,15 @@ return (
                 <img
                   src={brand.src}
                   alt={brand.alt}
-                  className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 ${brand.alt === "HAUS of Dentistry" || brand.alt === "NWH Group" ? "h-20" : "h-16"}`}
+                  className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 
+                    ${brand.alt === "HAUS of Dentistry" 
+                      ? "h-[106px]"
+                      : brand.alt === "NWH Group"  
+                      ? "h-[110px]" 
+                      : brand.alt === "BBC"
+                      ? "h-[125px]" 
+                      : "h-16"}`}
                   onError={e => (e.currentTarget.style.display = "none")}
-
-                  // className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 ${
-                  //   brand.alt === "HAUS of Dentistry" || brand.alt === "NWH Group" 
-                  //     ? "h-10 md:h-14 lg:h-16" 
-                  //     : "h-8 md:h-12 lg:h-14"
-                  // }`}
                 />
               </div>
             ))}
