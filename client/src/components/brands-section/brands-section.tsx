@@ -189,7 +189,7 @@ return (
           </div>
         ) : (
           // Desktop: Grid
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[5rem] items-center justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-[5rem] gap-y-[3rem] items-center justify-items-center">
             {brandLogos.map(brand => (
               <div
                 key={brand.id}

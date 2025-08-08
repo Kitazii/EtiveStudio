@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer-section/footer";
 // Sample images for the carousel - in a real app these would come from your CMS/API
 const stillsImages = Array.from({ length: 30 }, (_, index) => ({
   id: index + 1,
-  src: `https://picsum.photos/800/600?random=${index + 1}`,
+  src: `/attached_assets/stills-images/${index + 1}.png`,
   alt: `Still ${index + 1}`,
   title: `Professional Still ${index + 1}`,
 }));
@@ -72,7 +72,7 @@ export default function StillsPage() {
       </section>
 
       {/* Main Gallery Section */}
-      <section className="py-16 bg-white">
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Masonry Grid Layout - Professional Photography Style */}
@@ -251,7 +251,7 @@ export default function StillsPage() {
           </div>
 
           {/* Gallery Stats */}
-          <div className="text-center mt-16 pt-8 border-t border-gray-200">
+          <div className="text-center mt-16 pt-8 border-t border-gray-200 pb-7">
             <p className="text-gray-600">
               <span className="font-medium text-brand-black">{stillsImages.length}</span> images in collection
             </p>
@@ -262,12 +262,12 @@ export default function StillsPage() {
       {/* Lightbox Modal */}
       {isLightboxOpen && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-6xl max-h-full">
+          <div className="relative max-w-6xl h-full max-h-[92svh] flex items-center justify-center">
             
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-white transition-colors duration-200"
+              className="absolute right-4 top-[12%] -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 text-black transition-colors duration-200"
             >
               <X className="w-6 h-6" />
             </button>
@@ -275,7 +275,7 @@ export default function StillsPage() {
             {/* Previous Button */}
             <button
               onClick={prevLightboxImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 text-white transition-colors duration-200"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 text-black transition-colors duration-200"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -283,7 +283,7 @@ export default function StillsPage() {
             {/* Next Button */}
             <button
               onClick={nextLightboxImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 text-white transition-colors duration-200"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 text-black transition-colors duration-200"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -296,7 +296,7 @@ export default function StillsPage() {
             />
 
             {/* Image Info */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white">
+            <div className="bg-black/60 absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white">
               <h3 className="text-lg font-medium mb-1">
                 {stillsImages[lightboxImageIndex].title}
               </h3>
