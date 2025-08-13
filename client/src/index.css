@@ -103,7 +103,7 @@
   }
 
   .video-overlay {
-    background: linear-gradient(180deg, rgb(27, 18, 18, 0.72) 0%, rgba(136, 8, 8, 0.35) 200%);
+    background: linear-gradient(180deg, rgb(27, 18, 18, 0.72) 0%, rgba(8, 8, 136, 0.35) 200%);
   }
 
   .lazy-load {
