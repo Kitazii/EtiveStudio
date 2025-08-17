@@ -3,6 +3,9 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Navigation } from "@/components/navigation/navigation";
 import { Footer } from "@/components/footer-section/footer";
 
+import { SEOHead } from "@/components/seo-head/seo-head";
+import { getDomain } from "@/global-function/get-domain";
+
 // Sample images for the carousel - in a real app these would come from your CMS/API
 const stillsImages = Array.from({ length: 30 }, (_, index) => ({
   id: index + 1,
@@ -10,6 +13,31 @@ const stillsImages = Array.from({ length: 30 }, (_, index) => ({
   alt: `Still ${index + 1}`,
   title: `Professional Still ${index + 1}`,
 }));
+
+const getStillsJsonLd = () => {
+  const domain = getDomain();
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "@id": `${domain}/stills#gallery`,
+    "name": "Etive Studio - Stills Collection",
+    "description": "A curated collection of professional still photography work showcasing moments captured with precision and artistic vision",
+    "url": `${domain}/stills`,
+    "creator": {
+      "@type": "Organization",
+      "@id": `${domain}/#org`,
+      "name": "Etive Studio",
+      "url": domain
+    },
+    "image": stillsImages.slice(0, 5).map(img => `${domain}${img.src}`),
+    "numberOfItems": stillsImages.length,
+    "mainEntity": {
+      "@type": "CollectionPage",
+      "name": "Professional Photography Portfolio",
+      "description": "High-quality still photography showcasing professional expertise"
+    }
+  };
+};
 
 export default function StillsPage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -69,6 +97,13 @@ export default function StillsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Stills Collection - Professional Photography | Etive Studio"
+        description="Browse our curated collection of professional still photography work. Showcasing moments captured with precision and artistic vision by Etive Studio. View 11 stunning photography pieces."
+        canonical="/stills"
+        ogImage="/attached_assets/stills-images/still-1.png"
+        jsonLd={getStillsJsonLd()}
+      />
       <Navigation scrollSpy={scrollSpy} forceScrolledState={true} />
       
       {/* Hero Section */}
