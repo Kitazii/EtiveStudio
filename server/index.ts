@@ -3,6 +3,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { initializeMailer } from './services/mailer';
 import { registerRoutes } from "./routes/contactRoutes";
 import { setupVite, serveStatic, log } from "./vite";
+import prerender from "prerender-node";
 
 const app = express();
 app.use(express.json());
@@ -45,6 +46,23 @@ app.use((req, res, next) => {
   await initializeMailer(); 
   const server = await registerRoutes(app);
 
+  //Enable prerendring in production (for bots) BEFORE static fallback
+  if (app.get("env") !== "development" && process.env.PRERENDER_TOKEN) {
+    prerender.set("prerenderToken", process.env.PRERENDER_TOKEN);
+    //Force correct scheme & host (optional but recommended for canonical consistency)
+    prerender.set("protocol", "https");
+    prerender.set("host", "www.etivestudios.com");
+    //Don't prerender API & asset routes
+    prerender.blacklist([
+      '^/api',              // API endpoints
+      '^/assets',           // Vite build assets (css/js)
+      '^/attached_assets',  // your images/icons
+      '^/favicon\\.ico$',
+      '^/robots\\.txt$',
+      '^/sitemap\\.xml$'
+    ]);
+    app.use(prerender);
+  }
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
