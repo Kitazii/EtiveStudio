@@ -53,14 +53,14 @@ app.use((req, res, next) => {
     prerender.set("protocol", "https");
     prerender.set("host", "www.etivestudios.com");
     //Don't prerender API & asset routes
-    prerender.blacklist([
-      '^/api',              // API endpoints
-      '^/assets',           // Vite build assets (css/js)
-      '^/attached_assets',  // your images/icons
-      '^/favicon\\.ico$',
-      '^/robots\\.txt$',
-      '^/sitemap\\.xml$'
-    ]);
+    // prerender.blacklist([
+    //   '^/api',              // API endpoints
+    //   '^/assets',           // Vite build assets (css/js)
+    //   '^/attached_assets',  // your images/icons
+    //   '^/favicon\\.ico$',
+    //   '^/robots\\.txt$',
+    //   '^/sitemap\\.xml$'
+    // ]);
     app.use(prerender);
   }
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
