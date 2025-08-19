@@ -39,7 +39,7 @@ const brandLogos = [
   },
   {
     id: 8,
-    src: "/attached_assets/client-logos/bbc.png",
+    src: "/attached_assets/client-logos/BBC.png",
     alt: "BBC",
   },
   {
@@ -49,7 +49,7 @@ const brandLogos = [
   },
   {
     id: 10,
-    src: "/attached_assets/client-logos/nwh-group.png",
+    src: "/attached_assets/client-logos/NWH-Group.png",
     alt: "NWH Group",
   },
   {
