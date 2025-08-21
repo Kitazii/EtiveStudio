@@ -22,30 +22,58 @@ export async function initializeMailer() {
   contactTemplate = Handlebars.compile(templateSource);
 }
 
-// Safe to call after initializeMailer()
-export function formatContactEmail(data: {
+type ContactPayload = {
   name: string;
   email: string;
   message: string;
-}) {
+};
+
+function ensureEnv(name: string): string {
+  const val = process.env[name];
+  if (!val) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return val;
+}
+
+// Safe to call after initializeMailer()
+export function formatContactEmail(data: ContactPayload) {
   if (!contactTemplate) {
     throw new Error('Mailer not initialized – call initializeMailer() first');
   }
-  return {
-    html: contactTemplate({
-      name: data.name,
-      email: data.email,
-      message: data.message.replace(/\n/g, '<br/>'),
-    }),
-    text: `Name: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`,
-  };
+  // ✅ Use a hosted URL for the logo/banner (no local file reads).
+  // Put your asset in your frontend's /public/attached_assets
+  // and reference by absolute URL below:
+  const logoUrl =
+    "https://www.etivestudios.com/attached_assets/ETIVE_black_red_white_bg.png";
+
+  const html = contactTemplate({
+    name: data.name,
+    email: data.email,
+    // Preserve line breaks:
+    messageHtml: data.message.replace(/\n/g, "<br/>"),
+    logoUrl,
+    businessEmail: CONTACT_LINKS.email,
+    businessPhone: CONTACT_LINKS.phone,
+  });
+
+  const text = [
+    `New Contact Submission`,
+    `----------------------`,
+    `Name: ${data.name}`,
+    `Email: ${data.email}`,
+    `Message:`,
+    data.message,
+  ].join("\n");
+
+  return { html, text };
 }
 
 export const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.SMTP_USER!,
-    pass: process.env.SMTP_PASS!,
+    user: ensureEnv("SMTP_USER"),
+    pass: ensureEnv("SMTP_PASS"),
   },
   tls: { rejectUnauthorized: false },
 });
@@ -53,24 +81,21 @@ export const transporter = nodemailer.createTransport({
 /**
  * Send the contact‐form email, including attachments.
  */
-export async function sendContactEmail(data: {
-  name: string;
-  email: string;
-  message: string;
-}) {
+export async function sendContactEmail(data: ContactPayload) {
   const mail = formatContactEmail(data);
 
   await transporter.sendMail({
-    from: `"Website Contact" <${process.env.SMTP_USER}>`,
+    from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
     to: CONTACT_LINKS.email,
     subject: 'New Contact Form Submission',
-    ...mail,
-    attachments: [
-      {
-        filename: 'ETIVE_black_red_white_bg.png',
-        path: path.join(__dirname, '../../attached_assets/ETIVE_black_red_white_bg.png'),
-        cid: 'logoBanner',
-      },
-    ],
+    html: mail.html,
+    text: mail.text
+    // attachments: [
+    //   {
+    //     filename: 'ETIVE_black_red_white_bg.png',
+    //     path: path.join(__dirname, '../../attached_assets/ETIVE_black_red_white_bg.png'),
+    //     cid: 'logoBanner',
+    //   },
+    // ],
   });
 }
