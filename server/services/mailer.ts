@@ -79,7 +79,7 @@ export async function sendContactEmail(data: ContactPayload) {
   const mail = formatContactEmail(data);
 
     // Resolve the logo on disk (repo path you’re already serving on the site)
-  const logoPath = path.resolve(process.cwd(), 'attached_assets', 'ETIVE_black_red_white_bg.png');
+    const logoPath = path.resolve(__dirname, "../attached_assets/ETIVE_black_red_white_bg.png");
 
   await transporter.sendMail({
     from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
