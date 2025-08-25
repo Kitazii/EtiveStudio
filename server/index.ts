@@ -6,6 +6,9 @@ import { setupVite, serveStatic, log } from "./vite";
 import prerender from "prerender-node";
 
 const app = express();
+
+// add since im behind render proxy
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

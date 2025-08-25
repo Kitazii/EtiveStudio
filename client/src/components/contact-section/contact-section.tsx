@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, Suspense, useRef, useState, forwardRef  } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -21,8 +21,25 @@ import { apiRequest } from "@/lib/queryClient";
 import { CONTACT_LINKS } from "@/components/contact-section/data/contact";
 import { Formatters } from "@/components/utils/formatters";
 
+// ---- reCAPTCHA (lazy + typed ref) ----
+import type {
+  ReCAPTCHA as ReCAPTCHAInstance,
+  ReCAPTCHAProps,
+} from "react-google-recaptcha";
+const ReCAPTCHALazy = lazy(() => import("react-google-recaptcha"));
+
+// Wrapper to preserve the instance ref type when using React.lazy
+const ReCAPTCHA = forwardRef<ReCAPTCHAInstance, ReCAPTCHAProps>((props, ref) => {
+  // TS can't perfectly infer the ref type through lazy; cast is OK here.
+  return (
+    <Suspense fallback={<div>Loading verification…</div>}>
+      <ReCAPTCHALazy {...props} ref={ref} />
+    </Suspense>
+  );
+});
+ReCAPTCHA.displayName = "ReCAPTCHA";
+
 export function ContactSection() {
-  const [captchaChecked, setCaptchaChecked] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<InsertContact>({
@@ -34,12 +51,26 @@ export function ContactSection() {
     },
   });
 
+   // ✅ NEW: captcha + honeypot state
+  const recaptchaRef = useRef<ReCAPTCHAInstance | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [hp, setHp] = useState<string>(""); // honeypot (should stay empty)
+
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string;
+
+    // If the key is missing/misconfigured, render a safe message and keep the page alive
+  const captchaUnavailable = !siteKey || siteKey.trim().length < 10;
+
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      if (!captchaChecked) {
+      if (!captchaToken) {
         throw new Error("Please complete the captcha verification");
       }
-      return apiRequest("POST", "/api/contacts", data);
+      return apiRequest("POST", "/api/contacts", {
+        ...data,
+        captchaToken,
+        _hp: hp
+      });
     },
     onSuccess: () => {
       toast({
@@ -47,7 +78,10 @@ export function ContactSection() {
         description: "Thank you for your message. We'll get back to you soon.",
       });
       form.reset();
-      setCaptchaChecked(false);
+      setHp("");
+      setCaptchaToken(null);
+      // reset the widget for a fresh token next submit
+      recaptchaRef.current?.reset();
     },
     onError: (error: any) => {
       toast({
@@ -55,6 +89,9 @@ export function ContactSection() {
         description: error.message || "Something went wrong. Please try again.",
         variant: "destructive",
       });
+      // best effort reset (in case token was consumed)
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     },
   });
 
@@ -172,6 +209,21 @@ export function ContactSection() {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
                 >
+                {/* ✅ Honeypot -- hide from users and screen readers */}
+                 <div aria-hidden="true" className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden">
+                    <label>
+                      Do not fill this field:
+                      <input
+                        type="text"
+                        name="_hp"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={hp}
+                        onChange={(e) => setHp(e.target.value)}
+                      />
+                    </label>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     {/* Name Field */}
                     <FormField
@@ -239,28 +291,26 @@ export function ContactSection() {
                     )}
                   />
 
-                  {/* Captcha */}
-                  <div className="mb-6">
-                    <div className="flex items-center space-x-3">
-                      <Checkbox
-                        id="captcha"
-                        checked={captchaChecked}
-                        onCheckedChange={(checked) =>
-                          setCaptchaChecked(checked as boolean)
-                        }
-                        className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                  {/* reCAPTCHA */}
+                  <div className="mb-6 flex justify-center">
+                    {captchaUnavailable ? (
+                      <div className="text-sm text-red-600">
+                        CAPTCHA unavailable. Set <code>VITE_RECAPTCHA_SITE_KEY</code> to a valid <b>reCAPTCHA v2 (checkbox)</b> site key and restart the dev server.
+                      </div>
+                    ) : (
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={siteKey!}
+                        onChange={(token) => setCaptchaToken(token)}
+                        onExpired={() => setCaptchaToken(null)}
                       />
-                      {/*Use the react-google-recaptcha library, implement this once I launch to production*/}
-                      <label htmlFor="captcha" className="text-sm brand-gray">
-                        I'm not a robot (reCAPTCHA verification)
-                      </label>
-                    </div>
+                    )}
                   </div>
 
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    disabled={contactMutation.isPending}
+                    disabled={contactMutation.isPending || !captchaToken}
                     className="w-full bg-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-red-700 focus:ring-2 focus:ring-red-600 focus:ring-offset-2 transition-colors duration-200"
                   >
                     {contactMutation.isPending ? "Sending..." : "Send Message"}

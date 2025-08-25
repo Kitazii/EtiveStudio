@@ -5,10 +5,20 @@ import asyncHandler from 'express-async-handler';
 import { createContact, getAllContacts } from '../controllers/contactController';
 
 import { requireApiKey } from '../security/middleware';
+import { contactLimiter } from '../security/rateLimit';
+import { verifyHoneypot } from '../security/honeypot';
+import { verifyRecaptcha } from '../security/verifyCaptcha';
 
 const router = Router();
 
-router.post('/contacts', asyncHandler(createContact));
+// Order matters: rate limit -> honeypot -> captcha -> controller
+router.post('/contacts',
+  contactLimiter,
+  verifyHoneypot,
+  verifyRecaptcha,
+  asyncHandler(createContact)
+);
+
 router.get('/contacts', requireApiKey, asyncHandler(getAllContacts));
 
 export function registerRoutes(app: Express): Server {
