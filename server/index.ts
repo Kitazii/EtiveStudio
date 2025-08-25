@@ -4,6 +4,7 @@ import { initializeMailer } from './services/mailer';
 import { registerRoutes } from "./routes/contactRoutes";
 import { setupVite, serveStatic, log } from "./vite";
 import prerender from "prerender-node";
+import path from "path";
 
 const app = express();
 
@@ -40,6 +41,14 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+const attachedDir = path.resolve(process.cwd(), "attached_assets");
+
+// 2) Single-file guarantee route (only for this PNG)
+app.get("/attached_assets/ETIVE_black_red_white_bg.png", (req, res, next) => {
+  const filePath = path.join(attachedDir, "ETIVE_black_red_white_bg.png");
+  res.sendFile(filePath, (err) => (err ? next(err) : undefined));
 });
 
 (async () => {
