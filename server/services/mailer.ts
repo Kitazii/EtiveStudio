@@ -41,18 +41,12 @@ export function formatContactEmail(data: ContactPayload) {
   if (!contactTemplate) {
     throw new Error('Mailer not initialized – call initializeMailer() first');
   }
-  // ✅ Use a hosted URL for the logo/banner (no local file reads).
-  // Put your asset in your frontend's /public/attached_assets
-  // and reference by absolute URL below:
-  const logoUrl =
-    "https://www.etivestudios.com/attached_assets/ETIVE_black_red_white_bg.png";
 
   const html = contactTemplate({
     name: data.name,
     email: data.email,
     // Preserve line breaks:
     messageHtml: data.message.replace(/\n/g, "<br/>"),
-    logoUrl,
     businessEmail: CONTACT_LINKS.email,
     businessPhone: CONTACT_LINKS.phone,
   });
@@ -84,18 +78,22 @@ export const transporter = nodemailer.createTransport({
 export async function sendContactEmail(data: ContactPayload) {
   const mail = formatContactEmail(data);
 
+    // Resolve the logo on disk (repo path you’re already serving on the site)
+  const logoPath = path.resolve(process.cwd(), 'attached_assets', 'ETIVE_black_red_white_bg.png');
+
   await transporter.sendMail({
     from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
     to: CONTACT_LINKS.email,
     subject: 'New Contact Form Submission',
     html: mail.html,
-    text: mail.text
-    // attachments: [
-    //   {
-    //     filename: 'ETIVE_black_red_white_bg.png',
-    //     path: path.join(__dirname, '../../attached_assets/ETIVE_black_red_white_bg.png'),
-    //     cid: 'logoBanner',
-    //   },
-    // ],
+    text: mail.text,
+    attachments: [
+      {
+        filename: 'ETIVE_black_red_white_bg.png',
+        path: logoPath,
+        cid: 'logoBanner',
+        contentType: 'image/png',
+      },
+    ],
   });
 }

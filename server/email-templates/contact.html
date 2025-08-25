@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <div>
-    <p><strong>Name:</strong> {{name}}</p>
-    <p><strong>Email:</strong> {{email}}</p>
-    <p><strong>Message:</strong><br/>{{message}}</p>
-    </div>
-    <div style="text-align:center; margin-bottom:20px">
-        <img src="https://www.etivestudios.com/attached_assets/ETIVE_black_red_white_bg.png"
-        alt="Etive Studios Logo" style="height:auto;" />
-    </div>
+    <body style="font-family: Arial, sans-serif;">
+        <div>
+            <p><strong>Name:</strong> {{name}}</p>
+            <p><strong>Email:</strong> {{email}}</p>
+            <p><strong>Message:</strong><br/>{{messageHtml}}</p>
+        </div>
+        <div style="text-align:center; margin-bottom:20px">
+            <img src="cid:logoBanner" alt="Etive Studios Logo" style="height:auto; max-width: 320px;" />
+        </div>
+
+        <div style="text-align:center; color:#666; font-size:12px;">
+            <div>Contact: {{businessEmail}}</div>
+            <div>Phone: {{businessPhone}}</div>
+        </div>
+    </body>
 </html>
