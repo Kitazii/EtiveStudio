@@ -84,10 +84,20 @@ export async function sendContactEmail(data: ContactPayload) {
     // const logoPath = "wwww.etivestudios.com/attached_assets/ETIVE_black_red_white_bg.png";
 
       // Fallback if the controller didn't pass one (or for non-HTTP contexts)
-  const fallbackBase = process.env.PUBLIC_BASE_URL || "https://www.etivestudios.com";
+  const base = process.env.PUBLIC_BASE_URL || "https://www.etivestudios.com";
   const computedLogoUrl =
     data.logoUrl ||
-    new URL("/attached_assets/ETIVE_black_red_white_bg.png", fallbackBase).toString();
+    new URL("/attached_assets/ETIVE_black_red_white_bg.png", base).toString();
+
+  let logoContent: Buffer | undefined;
+  try {
+    const resp = await fetch(computedLogoUrl);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const arr = await resp.arrayBuffer();
+    logoContent = Buffer.from(arr);
+  } catch (e) {
+    console.warn("[mailer] failed to fetch logo:", computedLogoUrl, e);
+  }
 
   await transporter.sendMail({
     from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
@@ -95,13 +105,13 @@ export async function sendContactEmail(data: ContactPayload) {
     subject: 'New Contact Form Submission',
     html: mail.html,
     text: mail.text,
-    attachments: [
-      {
-        filename: 'ETIVE_black_red_white_bg.png',
-        path: computedLogoUrl,
-        cid: 'logoBanner',
-        contentType: 'image/png',
-      },
-    ],
+    attachments: logoContent
+      ? [{
+          filename: "ETIVE_black_red_white_bg.png",
+          content: logoContent,   // <-- use bytes, not local path
+          cid: "logoBanner",
+          contentType: "image/png",
+        }]
+      : [],
   });
 }
