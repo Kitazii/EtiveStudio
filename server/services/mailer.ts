@@ -80,14 +80,8 @@ export const transporter = nodemailer.createTransport({
 export async function sendContactEmail(data: ContactPayload) {
   const mail = formatContactEmail(data);
 
-    // // Resolve the logo on disk (repo path you’re already serving on the site)
-    // const logoPath = "wwww.etivestudios.com/attached_assets/ETIVE_black_red_white_bg.png";
-
-      // Fallback if the controller didn't pass one (or for non-HTTP contexts)
-  const fallbackBase = process.env.PUBLIC_BASE_URL || "https://www.etivestudios.com";
-  const computedLogoUrl =
-    data.logoUrl ||
-    new URL("/attached_assets/ETIVE_black_red_white_bg.png", fallbackBase).toString();
+  // Resolve logo path relative to project root
+  const logoPath = path.join(process.cwd(), 'attached_assets', 'ETIVE_black_red_white_bg.png');
 
   await transporter.sendMail({
     from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
@@ -98,7 +92,7 @@ export async function sendContactEmail(data: ContactPayload) {
     attachments: [
       {
         filename: 'ETIVE_black_red_white_bg.png',
-        path: computedLogoUrl,
+        path: logoPath,
         cid: 'logoBanner',
         contentType: 'image/png',
       },

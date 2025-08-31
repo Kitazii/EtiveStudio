@@ -106,24 +106,6 @@ export function AboutSection() {
                   isLoaded ? "loaded" : ""
                 }`}
               />
-              <img
-                src="/attached_assets/ETIVE_black_red_white_bg.png"
-                alt=""
-                aria-hidden="true"
-                width={1}
-                height={1}
-                loading="eager"
-                decoding="async"
-                style={{
-                  position: "absolute",
-                  width: 1,
-                  height: 1,
-                  opacity: 0,
-                  pointerEvents: "none",
-                  left: -9999,
-                  top: -9999,
-                }}
-              />
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-xl "></div>
             </div>
