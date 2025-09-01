@@ -5,5 +5,5 @@ export type ContactLinks = {
 
 export const CONTACT_LINKS: ContactLinks = {
   phone: "+447964873296",
-  email: "etivecreations@gmail.com"
+  email: "mr.kieranburns@gmail.com"
 };
