@@ -77,10 +77,16 @@ export async function sendContactEmail(data: ContactPayload) {
         filename: "ETIVE_black_red_white_bg.png",
         type: "image/png",
         disposition: "inline",
-        contentId: "logoBanner",            // MUST be snake_case for SendGrid
+        content_id: "logoBanner",            // MUST be snake_case for SendGrid
       },
     ],
   };
 
-  await sgMail.send(msg);
+  try {
+    await sgMail.send(msg);
+    console.log('Email sent successfully');
+  } catch (error: any) {
+    console.error('SendGrid Error:', error.response?.body || error);
+    throw error;
+  }
 }
