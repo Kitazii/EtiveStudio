@@ -18,11 +18,8 @@ export const createContact: RequestHandler = async (req, res) => {
 
   const { name, email, message } = result .data;
 
-    // Build absolute logo URL dynamically for this request
-  const logoUrl = assetUrl(req, "/attached_assets/ETIVE_black_red_white_bg.png");
-
   // send the email (attachments, template, etc. all handled in mailer)
-  await sendContactEmail({ name, email, message, logoUrl });
+  await sendContactEmail({ name, email, message });
 
   const contact = await storage.createContact(result.data);
   res.json({ success: true, contact });

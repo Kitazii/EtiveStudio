@@ -1,106 +1,86 @@
-import nodemailer from 'nodemailer';
-import fs from 'fs/promises';
-import path from 'path';
-import Handlebars from 'handlebars';
-import { fileURLToPath } from 'url';
-import { CONTACT_LINKS } from '../models/contact';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import sgMail, { MailDataRequired } from "@sendgrid/mail";
+import fs from "fs/promises";
+import path from "path";
+import Handlebars from "handlebars";
+import { CONTACT_LINKS } from "../models/contact";
 
 let contactTemplate: Handlebars.TemplateDelegate | null = null;
 
-// Call this once at app startup:
-export async function initializeMailer() {
-  const templatePath = path.resolve(
-      process.cwd(),           // → your project root
-      'server',
-      'email-templates',
-      'contact.html'
-    );
-  const templateSource = await fs.readFile(templatePath, 'utf-8');
-  contactTemplate = Handlebars.compile(templateSource);
-}
-
-type ContactPayload = {
-  name: string;
-  email: string;
-  message: string;
-  logoUrl?: string;
-};
-
 function ensureEnv(name: string): string {
-  const val = process.env[name];
-  if (!val) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-  return val;
+  const v = process.env[name];
+  if (!v) throw new Error(`Missing required env var: ${name}`);
+  return v;
 }
 
-// Safe to call after initializeMailer()
-export function formatContactEmail(data: ContactPayload) {
-  if (!contactTemplate) {
-    throw new Error('Mailer not initialized – call initializeMailer() first');
-  }
+// Call once at server start
+export async function initializeMailer() {
+  const key = ensureEnv("SENDGRID_API_KEY");
+  if (!key.startsWith("SG.")) throw new Error("SENDGRID_API_KEY looks wrong");
+  sgMail.setApiKey(key);
 
+  const templatePath = path.resolve(
+    process.cwd(),
+    "server",
+    "email-templates",
+    "contact.html"
+  );
+  const src = await fs.readFile(templatePath, "utf-8");
+  contactTemplate = Handlebars.compile(src);
+}
+
+type ContactPayload = { name: string; email: string; message: string };
+
+export function formatContactEmail(d: ContactPayload) {
+  if (!contactTemplate) throw new Error("Mailer not initialized");
   const html = contactTemplate({
-    name: data.name,
-    email: data.email,
-    // Preserve line breaks:
-    messageHtml: data.message.replace(/\n/g, "<br/>"),
+    name: d.name,
+    email: d.email,
+    messageHtml: d.message.replace(/\n/g, "<br/>"),
     imgSrc: "cid:logoBanner",
     businessEmail: CONTACT_LINKS.email,
     businessPhone: CONTACT_LINKS.phone,
   });
-
-  const text = [
-    `New Contact Submission`,
-    `----------------------`,
-    `Name: ${data.name}`,
-    `Email: ${data.email}`,
-    `Message:`,
-    data.message,
-  ].join("\n");
-
+  const text = `New Contact Submission
+----------------------
+Name: ${d.name}
+Email: ${d.email}
+Message:
+${d.message}`;
   return { html, text };
 }
 
-export const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: ensureEnv("SMTP_USER"),
-    pass: ensureEnv("SMTP_PASS"),
-  },
-  secure: true, // Use SSL/TLS
-  port: 465, // Secure SMTP port
-  tls: {
-    rejectUnauthorized: false,
-    minVersion: 'TLSv1.2'
-  }
-});
-
-/**
- * Send the contact‐form email, including attachments.
- */
 export async function sendContactEmail(data: ContactPayload) {
-  const mail = formatContactEmail(data);
+  const { html, text } = formatContactEmail(data);
 
-  // Resolve logo path relative to project root
-  const logoPath = path.join(process.cwd(), 'attached_assets', 'ETIVE_black_red_white_bg.png');
+  // inline logo
+  const logoPath = path.join(
+    process.cwd(),
+    "attached_assets",
+    "ETIVE_black_red_white_bg.png"
+  );
+  const logoBase64 = (await fs.readFile(logoPath)).toString("base64");
 
-  await transporter.sendMail({
-    from: `"Website Contact" <${ensureEnv("SMTP_USER")}>`,
-    to: CONTACT_LINKS.email,
-    subject: 'New Contact Form Submission',
-    html: mail.html,
-    text: mail.text,
+  const msg: MailDataRequired = {
+    from: {
+      email: ensureEnv("SENDGRID_FROM_EMAIL"),
+      name: process.env.SENDGRID_FROM_NAME || "Website Contact",
+    },
+    to: CONTACT_LINKS.email,                 // your inbox
+    subject: "New Contact Form Submission",
+    html,
+    text,
+    replyTo: data.email,                     // replies go to the visitor
+    categories: ["contact-form"],
     attachments: [
       {
-        filename: 'ETIVE_black_red_white_bg.png',
-        path: logoPath,
-        cid: 'logoBanner',
-        contentType: 'image/png',
+        content: logoBase64,
+        filename: "ETIVE_black_red_white_bg.png",
+        type: "image/png",
+        disposition: "inline",
+        contentId: "logoBanner",            // MUST be snake_case for SendGrid
       },
     ],
-  });
+  };
+
+  await sgMail.send(msg);
 }
