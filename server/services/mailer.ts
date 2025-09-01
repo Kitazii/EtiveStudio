@@ -66,14 +66,17 @@ export function formatContactEmail(data: ContactPayload) {
 }
 
 export const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // required for 465
+  service: 'gmail',
   auth: {
     user: ensureEnv("SMTP_USER"),
     pass: ensureEnv("SMTP_PASS"),
   },
-  //tls: { rejectUnauthorized: false },
+  secure: true, // Use SSL/TLS
+  port: 465, // Secure SMTP port
+  tls: {
+    rejectUnauthorized: false,
+    minVersion: 'TLSv1.2'
+  }
 });
 
 /**
