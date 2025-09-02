@@ -63,10 +63,10 @@ export async function sendContactEmail(data: ContactPayload) {
   const msg: MailDataRequired = {
     from: {
       email: ensureEnv("SENDGRID_FROM_EMAIL"),
-      name: process.env.SENDGRID_FROM_NAME || "Website Contact",
+      name: process.env.SENDGRID_FROM_NAME || "Etive Studio - Website Contact",
     },
     to: CONTACT_LINKS.email,                 // your inbox
-    subject: "New Contact Form Submission",
+    subject: "Etive Studio: New Contact Form Submission",
     html,
     text,
     replyTo: data.email,                     // replies go to the visitor
@@ -80,6 +80,10 @@ export async function sendContactEmail(data: ContactPayload) {
         content_id: "logoBanner",            // MUST be snake_case for SendGrid
       },
     ],
+    trackingSettings: {
+    clickTracking: { enable: false },   // transactional-friendly
+    openTracking: { enable: false },    // optional; disable if you don't need it
+    }
   };
 
   try {
