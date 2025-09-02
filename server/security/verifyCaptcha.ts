@@ -10,6 +10,14 @@ function ensureEnv(name: string): string {
   return v;
 }
 
+// ✅ Hosts your reCAPTCHA is allowed to run on (production)
+const validHosts = new Set<string>([
+  "www.etivestudios.com",
+  "etivestudios.com",
+  "etive-studio.onrender.com",
+  "localhost", // for local dev
+]);
+
 /**
  * Verifies Google reCAPTCHA v2 token server-side.
  * Expects req.body.captchaToken to be present.
@@ -53,10 +61,14 @@ export const verifyRecaptcha: RequestHandler = async (req, res, next) => {
       });
     }
 
-    // Optional: enforce your hostname in production
-    // if (process.env.NODE_ENV === "production" && data.hostname !== "www.etivestudios.com") {
-    //   return res.status(400).json({ message: "Invalid CAPTCHA host" });
-    // }
+    // ✅ Enforce your hostname(s) in production
+    if (process.env.NODE_ENV === "production") {
+      // Google normally returns bare host (no scheme)
+      const host = (data.hostname || "").toLowerCase();
+      if (!validHosts.has(host)) {
+        return res.status(400).json({ message: "Invalid CAPTCHA host" });
+      }
+    }
 
     // Clean up so it never leaks further down:
     delete req.body.captchaToken;

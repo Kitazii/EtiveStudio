@@ -4,6 +4,9 @@ import path from "path";
 import Handlebars from "handlebars";
 import { CONTACT_LINKS } from "../models/contact";
 
+import createDOMPurify from 'isomorphic-dompurify';
+import { JSDOM } from 'jsdom';
+
 let contactTemplate: Handlebars.TemplateDelegate | null = null;
 
 function ensureEnv(name: string): string {
@@ -31,11 +34,20 @@ export async function initializeMailer() {
 type ContactPayload = { name: string; email: string; message: string };
 
 export function formatContactEmail(d: ContactPayload) {
+  
+  const window = new JSDOM('').window;
+  const DOMPurify = createDOMPurify(window);
+
+  const messageHtml = DOMPurify.sanitize(d.message.replace(/\n/g, '<br/>'), {
+    ALLOWED_TAGS: ['br'],
+    ALLOWED_ATTR: [],
+  });
+
   if (!contactTemplate) throw new Error("Mailer not initialized");
   const html = contactTemplate({
     name: d.name,
     email: d.email,
-    messageHtml: d.message.replace(/\n/g, "<br/>"),
+    messageHtml: messageHtml,
     imgSrc: "cid:logoBanner",
     businessEmail: CONTACT_LINKS.email,
     businessPhone: CONTACT_LINKS.phone,

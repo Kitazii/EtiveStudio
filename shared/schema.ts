@@ -15,9 +15,9 @@ export const insertContactSchema = createInsertSchema(contacts).pick({
   email: true,
   message: true,
 }).extend({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters").max(200, "Name must be at most 200 characters"),
+  email: z.string().email("Please enter a valid email address").max(320, "Email must be at most 320 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters").max(5000, "Message must be at most 5000 characters"),
 });
 
 export type InsertContact = z.infer<typeof insertContactSchema>;

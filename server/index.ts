@@ -1,17 +1,65 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
+import helmet from "helmet"; // ✅ import helmet
 import { initializeMailer } from './services/mailer';
 import { registerRoutes } from "./routes/contactRoutes";
 import { setupVite, serveStatic, log } from "./vite";
 import prerender from "prerender-node";
 import path from "path";
+import cors from "cors";
+
+const PROD_ORIGINS = [
+  "https://www.etivestudios.com",
+  "https://etivestudios.com",
+  "https://etive-studio.onrender.com",
+];
+
+const DEV_ORIGINS = [
+  "http://localhost:5173", // Vite
+  "http://localhost:5000", // same-host dev calls (if needed)
+];
+
+const ALLOW = (process.env.NODE_ENV === "production")
+  ? PROD_ORIGINS
+  : [...PROD_ORIGINS, ...DEV_ORIGINS];
 
 const app = express();
 
+// ✅ security headers go here
+app.use(helmet({
+  contentSecurityPolicy: false, // disable until you’ve tuned CSP for React/Vite
+  crossOriginResourcePolicy: { policy: "same-site" },
+}));
+
 // add since im behind render proxy
 app.set("trust proxy", 1);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+// Allow-list CORS
+app.use(cors({
+  origin(origin, cb) {
+    // Allow non-browser tools with no Origin (curl/Postman)
+    if (!origin) return cb(null, true);
+
+    if (ALLOW.includes(origin)) return cb(null, true);
+
+    console.warn("[CORS] blocked origin:", origin);
+    // Don’t throw; just disable CORS for this request
+    return cb(null, false);
+  },
+  methods: ["GET", "POST", "OPTIONS"],
+  // Let cors reflect Access-Control-Request-Headers automatically:
+  // (remove this to avoid pinning and accidental blocks)
+  // allowedHeaders: ["Content-Type", "x-api-key"],
+  optionsSuccessStatus: 204,
+  credentials: false, // set true only if you use cookies/auth with credentials
+}));
+
+// Belt & braces: ensure preflights always get handled fast
+app.options("*", cors());
+
+// ✅ request size limits (before routes)
+app.use(express.json({ limit: "50kb" }));
+app.use(express.urlencoded({ extended: false, limit: "50kb" }));
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -82,9 +130,7 @@ app.get("/attached_assets/ETIVE_black_red_white_bg.png", (req, res, next) => {
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
-    throw err;
   });
 
   // importantly only setup vite in development and after
