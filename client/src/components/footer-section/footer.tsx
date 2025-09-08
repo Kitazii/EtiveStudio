@@ -58,6 +58,18 @@ export function Footer() {
               );
             })}
           </div>
+
+          {/* Kitazi Web Agency Logo */}
+          <div className="mb-4 md:mb-0 flex items-center">
+            <span className="text-gray-600 text-sm mr-2 font-bold italic">powered by</span>
+            <img
+              src="/attached_assets/my-logo/kitazi-web-agency-transparent.png"
+              alt="Kitazi Web Agency"
+              className="h-20 w-auto"
+            />
+          </div>
+
+
         </div>
       </div>
     </footer>
