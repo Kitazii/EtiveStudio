@@ -60,16 +60,14 @@ export function Footer() {
           </div>
 
           {/* Kitazi Web Agency Logo */}
-          <div className="mb-4 md:mb-0 flex items-center">
+          <div className="mb-4 md:mb-0 flex items-center mt-8 md:mt-0 border-t-2 md:border-t-0 border-gray-200 pt-6 md:pt-0">
             <span className="text-gray-600 text-sm mr-2 font-bold italic">powered by</span>
             <img
               src="/attached_assets/my-logo/kitazi-web-agency-transparent.png"
               alt="Kitazi Web Agency"
-              className="h-20 w-auto"
+              className="h-16 w-auto md:h-20"
             />
           </div>
-
-
         </div>
       </div>
     </footer>
