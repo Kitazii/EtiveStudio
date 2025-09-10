@@ -8,8 +8,8 @@ function createProductionBuild() {
     fs.mkdirSync('dist', { recursive: true });
   }
   
-  // Copy the final production HTML template (completely optimized)
-  const productionHTML = fs.readFileSync('client/index.final.html', 'utf8');
+  // Copy the production HTML template
+  const productionHTML = fs.readFileSync('client/index.html', 'utf8');
   
   // Write to dist directory for deployment
   fs.writeFileSync('dist/index.html', productionHTML);
