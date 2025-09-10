@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://etive.studio/sitemap.xml
+Sitemap: https://www.etivestudios.com/sitemap.xml
 
 # Additional crawling directives
 Crawl-delay: 1

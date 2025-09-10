@@ -4,25 +4,25 @@
     
     <!-- Home Page -->
     <url>
-        <loc>https://etive.studio/</loc>
+        <loc>https://www.etivestudios.com/</loc>
         <lastmod>2025-09-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://etive.studio/attached_assets/stills-images/still-1.png</image:loc>
-            <image:title>Etive Studio Professional Photography</image:title>
-            <image:caption>Professional photography services for brands, events, and creative projects</image:caption>
+            <image:loc>https://www.etivestudios.com/attached_assets/stills-images/still-1.png</image:loc>
+            <image:title>Etive Studio Professional Videography</image:title>
+            <image:caption>Professional videography services for brands, events, and creative projects</image:caption>
         </image:image>
     </url>
 
     <!-- Stills Page -->
     <url>
-        <loc>https://etive.studio/stills</loc>
+        <loc>https://www.etivestudios.com/stills</loc>
         <lastmod>2025-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://etive.studio/attached_assets/stills-images/still-1.png</image:loc>
+            <image:loc>https://www.etivestudios.com/attached_assets/stills-images/still-1.png</image:loc>
             <image:title>Professional Still Photography Collection</image:title>
             <image:caption>Curated collection of professional still photography work</image:caption>
         </image:image>
@@ -30,7 +30,7 @@
 
     <!-- Portfolio Items (Video Content) -->
     <url>
-        <loc>https://etive.studio/#portfolio</loc>
+        <loc>https://www.etivestudios.com/#portfolio</loc>
         <lastmod>2025-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -38,7 +38,7 @@
 
     <!-- About Section -->
     <url>
-        <loc>https://etive.studio/#about</loc>
+        <loc>https://www.etivestudios.com/#about</loc>
         <lastmod>2025-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -46,7 +46,7 @@
 
     <!-- Contact Section -->
     <url>
-        <loc>https://etive.studio/#contact</loc>
+        <loc>https://www.etivestudios.com/#contact</loc>
         <lastmod>2025-09-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
