@@ -70,10 +70,10 @@ export function HeroSection({
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center text-center text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-display text-4xl md:text-6xl lg:text-6xl font-bold mb-6">
-            CAPTURING MOMENTS,
-            <br />
-            <span className="text-red-500">CREATING STORIES</span>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-6xl font-bold mb-6 whitespace-nowrap">
+        ELEVATE YOUR BUSINESS
+        <br />
+        <span className="text-red-500">WITH VIDEO</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-150">
             Professional videography services that bring your vision to life
