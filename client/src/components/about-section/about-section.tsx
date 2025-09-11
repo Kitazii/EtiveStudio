@@ -114,11 +114,11 @@ export function AboutSection() {
           <div className="order-1 lg:order-2">
             {/* Title Section */}
             <div className="text-left mb-8">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-black mb-6 text-center">
                 <span className="inline-block border-b-4 border-brand-red pb-1">
                   ABOUT <span className="brand-gray">ETIVE STUDIOS</span>
                 </span>
-              </h2>
+                </h2>
             </div>
             <div className="flex items-start">
               <p className="text-lg brand-gray">

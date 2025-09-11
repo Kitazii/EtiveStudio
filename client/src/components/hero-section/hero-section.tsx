@@ -68,15 +68,15 @@ export function HeroSection({
       <div className="absolute inset-0 video-overlay"></div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center text-center text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-display text-4xl md:text-6xl lg:text-6xl font-bold mb-6 whitespace-nowrap">
-        ELEVATE YOUR BUSINESS
-        <br />
-        <span className="text-red-500">WITH VIDEO</span>
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-150">
-            Professional videography services that bring your vision to life
+      <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4">
+        <div className="max-w-4xl mx-auto w-full sm:px-6 lg:px-8">
+            <h1 className="font-display text-[1.6rem] md:text-6xl lg:text-6xl font-bold mb-6 whitespace-nowrap">
+          ELEVATE YOUR BUSINESS
+          <br />
+          <span className="text-red-500">WITH VIDEO</span>
+            </h1>
+          <p className="md:text-xl lg:text-2xl mb-8 text-gray-150 break-words">
+        Professional videography services that bring your vision to life
           </p>
           <Button
             onClick={scrollToContact}
