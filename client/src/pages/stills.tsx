@@ -12,13 +12,13 @@ const getStillsJsonLd = () => {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
     "@id": `${domain}/stills#gallery`,
-    "name": "Etive Studio - Stills Collection",
+    "name": "Etive Studios - Stills Collection",
     "description": "A curated collection of professional still photography work showcasing moments captured with precision and artistic vision",
     "url": `${domain}/stills`,
     "creator": {
       "@type": "Organization",
       "@id": `${domain}/#org`,
-      "name": "Etive Studio",
+      "name": "Etive Studios",
       "url": domain
     },
     "image": stillsImages.slice(0, 5).map(img => `${domain}${img.src}`),
@@ -77,8 +77,8 @@ export default function StillsPage() {
   return (
     <div className="min-h-screen bg-white">
       <SEOHead
-        title="Stills Collection - Professional Photography | Etive Studio"
-        description="Browse our curated collection of professional still photography work. Showcasing moments captured with precision and artistic vision by Etive Studio. View 11 stunning photography pieces."
+        title="Stills Collection - Professional Photography | Etive Studios"
+        description="Browse our curated collection of professional still photography work. Showcasing moments captured with precision and artistic vision by Etive Studios. View 11 stunning photography pieces."
         canonical="/stills"
         ogImage="/attached_assets/stills-images/still-1.png"
         jsonLd={getStillsJsonLd()}

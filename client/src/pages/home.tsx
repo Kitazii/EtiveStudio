@@ -20,8 +20,8 @@ const getHomeJsonLd = () => {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${domain}/#org`,
-    "name": "Etive Studio",
-    "description": "Professional photography services for brands, events, and creative projects",
+    "name": "Etive Studios",
+    "description": "Professional videography services for brands, events, and creative projects",
     "url": domain,
     "logo": `${domain}/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.png`,
     "image": `${domain}/attached_assets/stills-images/1.png`,
@@ -31,7 +31,7 @@ const getHomeJsonLd = () => {
       "availableLanguage": "English"
     },
     "sameAs": [],
-    "serviceType": "Photography Services",
+    "serviceType": "Videography Services",
     "areaServed": "Worldwide"
   };
 };
@@ -48,8 +48,8 @@ export default function Home() {
   return (
     <div className="min-h-screen pb-20 md:pb-0">
       <SEOHead
-        title="Etive Studio - Professional Photography Services"
-        description="Etive Studio offers professional photography services for brands, events, and creative projects. Based photographer with extensive portfolio and trusted by leading brands including Decathlon, Harley-Davidson, BBC, and Adidas."
+        title="Etive Studios - Professional Videography Services"
+        description="Etive Studios offers professional videography services for brands, events, and creative projects. Based videographer with extensive portfolio and trusted by leading brands including Decathlon, Harley-Davidson, BBC, and Adidas."
         canonical="/"
         ogImage="/attached_assets/stills-images/still-1.png"
         jsonLd={getHomeJsonLd()}

@@ -75,10 +75,10 @@ export async function sendContactEmail(data: ContactPayload) {
   const msg: MailDataRequired = {
     from: {
       email: ensureEnv("SENDGRID_FROM_EMAIL"),
-      name: process.env.SENDGRID_FROM_NAME || "Etive Studio - Website Contact",
+      name: process.env.SENDGRID_FROM_NAME || "Etive Studios - Website Contact",
     },
     to: CONTACT_LINKS.email,                 // your inbox
-    subject: "Etive Studio: New Contact Form Submission",
+    subject: "Etive Studios: New Contact Form Submission",
     html,
     text,
     replyTo: data.email,                     // replies go to the visitor

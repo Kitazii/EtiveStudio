@@ -39,7 +39,7 @@ export function SEOHead({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
-      <meta property="og:site_name" content="Etive Studio" />
+      <meta property="og:site_name" content="Etive Studios" />
       
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
