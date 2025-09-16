@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 interface CounterProps {
   end: number;
@@ -98,15 +99,15 @@ export function AboutSection() {
           {/* Image */}
           <div className="order-2 lg:order-1 relative hidden md:block md:me-10">
             <div className="md:scale-[1.16]">
-              <img
+              <OptimizedImage
                 ref={imageRef}
-                src="/attached_assets/Etive_1_1752237970702.JPG"
+                src="/attached_assets/Etive_1_1752237970702.webp"
+                srcFallback="/attached_assets/Etive_1_1752237970702.JPG"
                 alt="Etive Studio City Photo"
                 className={`lazy-load rounded-xl shadow-2xl w-full h-auto transition-opacity duration-300 ${
                   isLoaded ? "loaded" : ""
                 }`}
                 loading="lazy"
-                decoding="async"
               />
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-xl "></div>

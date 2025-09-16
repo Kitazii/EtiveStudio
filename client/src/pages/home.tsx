@@ -23,8 +23,8 @@ const getHomeJsonLd = () => {
     "name": "Etive Studios",
     "description": "Professional videography services for brands, events, and creative projects",
     "url": domain,
-    "logo": `${domain}/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.png`,
-    "image": `${domain}/attached_assets/stills-images/1.png`,
+    "logo": `${domain}/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.webp`,
+    "image": `${domain}/attached_assets/stills-images/1.webp`,
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -51,7 +51,7 @@ export default function Home() {
         title="Etive Studios - Professional Videography Services"
         description="Etive Studios offers professional videography services for brands, events, and creative projects. Based videographer with extensive portfolio and trusted by leading brands including Decathlon, Harley-Davidson, BBC, and Adidas."
         canonical="/"
-        ogImage="/attached_assets/stills-images/still-1.png"
+        ogImage="/attached_assets/stills-images/still-1.webp"
         jsonLd={getHomeJsonLd()}
       />
       <Navigation scrollSpy={scrollSpy} />

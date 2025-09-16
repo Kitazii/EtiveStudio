@@ -14,7 +14,7 @@ export function SEOHead({
   title, 
   description, 
   canonical, 
-  ogImage = "/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.png",
+  ogImage = "/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.webp",
   ogType = "website",
   jsonLd 
 }: SEOHeadProps) {

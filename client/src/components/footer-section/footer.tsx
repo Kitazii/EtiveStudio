@@ -1,4 +1,5 @@
 import { SiFacebook, SiInstagram, SiYoutube, SiLinkedin } from "react-icons/si";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 export function Footer() {
   const socialLinks = [
@@ -30,12 +31,12 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo and Copyright */}
           <div className="mb-4 md:mb-0">
-            <img
-              src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
+            <OptimizedImage
+              src="/attached_assets/ETIVE_black_red_transparent_1751556670379.webp"
+              srcFallback="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
               alt="Etive Studios"
               className="h-6 w-auto mx-8 mb-6"
               loading="lazy"
-              decoding="async"
             />
             <p className="text-gray-600 text-sm mx-5">
               © {new Date().getFullYear()} Etive Studios. All rights reserved.
@@ -64,12 +65,12 @@ export function Footer() {
           {/* Kitazi Web Agency Logo */}
           <div className="mb-4 md:mb-0 flex items-center mt-8 md:mt-0 border-t-2 md:border-t-0 border-gray-200 pt-6 md:pt-0">
             <span className="text-gray-600 text-sm mr-2 font-bold italic">powered by</span>
-            <img
-              src="/attached_assets/my-logo/kitazi-web-agency-transparent.png"
+            <OptimizedImage
+              src="/attached_assets/my-logo/kitazi-web-agency-transparent.webp"
+              srcFallback="/attached_assets/my-logo/kitazi-web-agency-transparent.png"
               alt="Kitazi Web Agency"
               className="h-16 w-auto md:h-20"
               loading="lazy"
-              decoding="async"
             />
           </div>
         </div>

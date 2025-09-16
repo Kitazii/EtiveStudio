@@ -33,7 +33,7 @@ export function VisualNarrativesSection({
       <div
         className="absolute inset-0 w-full h-[110%] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/attached_assets/London_1752238686588.PNG')",
+          backgroundImage: "url('/attached_assets/London_1752238686588.webp')",
           transform: `translateY(${parallaxOffset * 0.3}px)`,
           top: "3.0%",
         }}

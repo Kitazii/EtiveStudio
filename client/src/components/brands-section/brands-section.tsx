@@ -1,65 +1,78 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 const brandLogos = [
   {
     id: 1,
-    src: "/attached_assets/client-logos/adidas.png",
+    src: "/attached_assets/client-logos/adidas.webp",
+    srcFallback: "/attached_assets/client-logos/adidas.png",
     alt: "Adidas",
   },
   {
     id: 2,
-    src: "/attached_assets/client-logos/SGN.png",
+    src: "/attached_assets/client-logos/SGN.webp",
+    srcFallback: "/attached_assets/client-logos/SGN.png",
     alt: "SGN",
   },
   {
     id: 3,
-    src: "/attached_assets/client-logos/wren-kitchens.png",
+    src: "/attached_assets/client-logos/wren-kitchens.webp",
+    srcFallback: "/attached_assets/client-logos/wren-kitchens.png",
     alt: "Wren Kitchens",
   },
   {
     id: 4,
-    src: "/attached_assets/client-logos/alba.png",
+    src: "/attached_assets/client-logos/alba.webp",
+    srcFallback: "/attached_assets/client-logos/alba.png",
     alt: "Visi Scotland | Alba",
   },
   {
     id: 5,
-    src: "/attached_assets/client-logos/Adagio.png",
+    src: "/attached_assets/client-logos/Adagio.webp",
+    srcFallback: "/attached_assets/client-logos/Adagio.png",
     alt: "Adagio Hotels",
   },
   {
     id: 6,
-    src: "/attached_assets/client-logos/bladestar-renewables.png",
+    src: "/attached_assets/client-logos/bladestar-renewables.webp",
+    srcFallback: "/attached_assets/client-logos/bladestar-renewables.png",
     alt: "Bladestar Renewables",
   },
   {
     id: 7,
-    src: "/attached_assets/client-logos/harley-davidson.png",
+    src: "/attached_assets/client-logos/harley-davidson.webp",
+    srcFallback: "/attached_assets/client-logos/harley-davidson.png",
     alt: "Harley Davidson",
   },
   {
     id: 8,
-    src: "/attached_assets/client-logos/BBC.png",
+    src: "/attached_assets/client-logos/BBC.webp",
+    srcFallback: "/attached_assets/client-logos/BBC.png",
     alt: "BBC",
   },
   {
     id: 9,
-    src: "/attached_assets/client-logos/HAUS-of-Dentistry.png",
+    src: "/attached_assets/client-logos/HAUS-of-Dentistry.webp",
+    srcFallback: "/attached_assets/client-logos/HAUS-of-Dentistry.png",
     alt: "HAUS of Dentistry",
   },
   {
     id: 10,
-    src: "/attached_assets/client-logos/NWH-Group.png",
+    src: "/attached_assets/client-logos/NWH-Group.webp",
+    srcFallback: "/attached_assets/client-logos/NWH-Group.png",
     alt: "NWH Group",
   },
   {
     id: 11,
-    src: "/attached_assets/client-logos/cyber-energia.png",
+    src: "/attached_assets/client-logos/cyber-energia.webp",
+    srcFallback: "/attached_assets/client-logos/cyber-energia.png",
     alt: "Cyber Energia",
   },
   {
     id: 12,
-    src: "/attached_assets/client-logos/decathlon.png",
+    src: "/attached_assets/client-logos/decathlon.webp",
+    srcFallback: "/attached_assets/client-logos/decathlon.png",
     alt: "Decathlon",
   },
 ];
@@ -150,12 +163,12 @@ return (
                   key={brand.id}
                   className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300 min-w-0 flex-1"
                 >
-                  <img
+                  <OptimizedImage
                     src={brand.src}
+                    srcFallback={brand.srcFallback}
                     alt={brand.alt}
                     className="h-14 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                     loading="lazy"
-                    decoding="async"
                     onError={e => (e.currentTarget.style.display = "none")}
                   />
                 </div>
@@ -197,8 +210,9 @@ return (
                 key={brand.id}
                 className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
               >
-                <img
+                <OptimizedImage
                   src={brand.src}
+                  srcFallback={brand.srcFallback}
                   alt={brand.alt}
                   className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300
                     ${brand.alt === "HAUS of Dentistry"
@@ -209,7 +223,6 @@ return (
                       ? "h-[125px]"
                       : "h-16"}`}
                   loading="lazy"
-                  decoding="async"
                   onError={e => (e.currentTarget.style.display = "none")}
                 />
               </div>

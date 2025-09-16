@@ -79,7 +79,7 @@ export function StillsSection({
                                 src={columnImages[0].src}
                                 alt={columnImages[0].alt}
                                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                                loading="lazy"
+                                loading={startIndex < 8 ? "eager" : "lazy"}
                                 decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -107,7 +107,7 @@ export function StillsSection({
                                     src={img.src}
                                     alt={img.alt}
                                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                                    loading="lazy"
+                                    loading={startIndex + i < 8 ? "eager" : "lazy"}
                                     decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -150,7 +150,7 @@ export function StillsSection({
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                        loading="lazy"
+                        loading={index < 6 ? "eager" : "lazy"}
                         decoding="async"
                         />
                         

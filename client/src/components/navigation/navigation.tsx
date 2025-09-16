@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 interface NavigationProps {
   scrollSpy: string;
@@ -95,12 +96,12 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img
-                src="/attached_assets/ETIVE_high_resolution_white_1751551440326.PNG"
+              <OptimizedImage
+                src="/attached_assets/ETIVE_high_resolution_white_1751551440326.webp"
+                srcFallback="/attached_assets/ETIVE_high_resolution_white_1751551440326.PNG"
                 alt="Etive Studios"
                 className="h-6 w-auto mt-3"
-                loading="lazy"
-                decoding="async"
+                loading="eager"
               />
             </div>
 
@@ -176,12 +177,12 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <img
-                src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
+              <OptimizedImage
+                src="/attached_assets/ETIVE_black_red_transparent_1751556670379.webp"
+                srcFallback="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
                 alt="Etive Studios"
                 className="h-6 w-auto mt-3"
-                loading="lazy"
-                decoding="async"
+                loading="eager"
               />
             </div>
 

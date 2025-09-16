@@ -80,7 +80,7 @@ export default function StillsPage() {
         title="Stills Collection - Professional Photography | Etive Studios"
         description="Browse our curated collection of professional still photography work. Showcasing moments captured with precision and artistic vision by Etive Studios. View 11 stunning photography pieces."
         canonical="/stills"
-        ogImage="/attached_assets/stills-images/still-1.png"
+        ogImage="/attached_assets/stills-images/still-1.webp"
         jsonLd={getStillsJsonLd()}
       />
       <Navigation scrollSpy={scrollSpy} forceScrolledState={true} />

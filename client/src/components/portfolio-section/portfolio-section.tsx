@@ -199,6 +199,8 @@ return (
                         src={`https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`}
                         alt={item.title}
                         className="w-full h-full object-cover rounded-xl"
+                        loading="lazy"
+                        decoding="async"
                       />
                        {/* FAKE PLAY BUTTON (only if overlay is not active) */}
                       {!overlayActive && (
