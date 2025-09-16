@@ -99,6 +99,8 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
                 src="/attached_assets/ETIVE_high_resolution_white_1751551440326.PNG"
                 alt="Etive Studios"
                 className="h-6 w-auto mt-3"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -178,6 +180,8 @@ export function Navigation({ scrollSpy, forceScrolledState = false }: Navigation
                 src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
                 alt="Etive Studios"
                 className="h-6 w-auto mt-3"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

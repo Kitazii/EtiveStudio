@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import helmet from "helmet"; // ✅ import helmet
+import compression from "compression";
 import { initializeMailer } from './services/mailer';
 import { registerRoutes } from "./routes/contactRoutes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -25,9 +26,12 @@ const ALLOW = (process.env.NODE_ENV === "production")
 
 const app = express();
 
+// ✅ Enable gzip compression
+app.use(compression());
+
 // ✅ security headers go here
 app.use(helmet({
-  contentSecurityPolicy: false, // disable until you’ve tuned CSP for React/Vite
+  contentSecurityPolicy: false, // disable until you've tuned CSP for React/Vite
   crossOriginResourcePolicy: { policy: "same-site" },
 }));
 
@@ -104,8 +108,19 @@ app.get("/attached_assets/ETIVE_black_red_white_bg.png", (req, res, next) => {
 });
 
 (async () => {
-  // Serve static files from attached_assets directory
-  app.use('/attached_assets', express.static('attached_assets'));
+  // Serve static files from attached_assets directory with caching
+  app.use('/attached_assets', express.static('attached_assets', {
+    maxAge: '1y', // Cache for 1 year
+    etag: false,
+    setHeaders: (res, path) => {
+      // Set specific caching for different file types
+      if (path.endsWith('.webp') || path.endsWith('.jpg') || path.endsWith('.png')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable'); // 1 year for images
+      } else if (path.endsWith('.mp4')) {
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day for videos
+      }
+    }
+  }));
 
   await initializeMailer(); 
   const server = await registerRoutes(app);

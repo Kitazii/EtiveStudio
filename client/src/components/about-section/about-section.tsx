@@ -105,6 +105,8 @@ export function AboutSection() {
                 className={`lazy-load rounded-xl shadow-2xl w-full h-auto transition-opacity duration-300 ${
                   isLoaded ? "loaded" : ""
                 }`}
+                loading="lazy"
+                decoding="async"
               />
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-xl "></div>

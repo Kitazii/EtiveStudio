@@ -34,6 +34,8 @@ export function Footer() {
               src="/attached_assets/ETIVE_black_red_transparent_1751556670379.PNG"
               alt="Etive Studios"
               className="h-6 w-auto mx-8 mb-6"
+              loading="lazy"
+              decoding="async"
             />
             <p className="text-gray-600 text-sm mx-5">
               © {new Date().getFullYear()} Etive Studios. All rights reserved.
@@ -66,6 +68,8 @@ export function Footer() {
               src="/attached_assets/my-logo/kitazi-web-agency-transparent.png"
               alt="Kitazi Web Agency"
               className="h-16 w-auto md:h-20"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

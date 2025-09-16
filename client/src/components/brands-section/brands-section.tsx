@@ -154,6 +154,8 @@ return (
                     src={brand.src}
                     alt={brand.alt}
                     className="h-14 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    decoding="async"
                     onError={e => (e.currentTarget.style.display = "none")}
                   />
                 </div>
@@ -198,14 +200,16 @@ return (
                 <img
                   src={brand.src}
                   alt={brand.alt}
-                  className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300 
-                    ${brand.alt === "HAUS of Dentistry" 
+                  className={`w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300
+                    ${brand.alt === "HAUS of Dentistry"
                       ? "h-[106px]"
-                      : brand.alt === "NWH Group"  
-                      ? "h-[110px]" 
+                      : brand.alt === "NWH Group"
+                      ? "h-[110px]"
                       : brand.alt === "BBC"
-                      ? "h-[125px]" 
+                      ? "h-[125px]"
                       : "h-16"}`}
+                  loading="lazy"
+                  decoding="async"
                   onError={e => (e.currentTarget.style.display = "none")}
                 />
               </div>

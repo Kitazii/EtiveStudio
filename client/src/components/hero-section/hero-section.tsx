@@ -30,8 +30,8 @@ export function HeroSection({
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      // Preload the video for smoother playback
-      video.preload = "auto";
+      // Preload only metadata for faster initial load
+      video.preload = "metadata";
 
       // Handle loop manually to prevent stuttering
       video.addEventListener("ended", () => {
@@ -53,7 +53,7 @@ export function HeroSection({
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         webkit-playsinline="true"
         x-webkit-airplay="allow"
       >

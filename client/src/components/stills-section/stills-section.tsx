@@ -80,6 +80,7 @@ export function StillsSection({
                                 alt={columnImages[0].alt}
                                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                                 loading="lazy"
+                                decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -107,6 +108,7 @@ export function StillsSection({
                                     alt={img.alt}
                                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                                     loading="lazy"
+                                    decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -149,6 +151,7 @@ export function StillsSection({
                         alt={image.alt}
                         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                         loading="lazy"
+                        decoding="async"
                         />
                         
                         {/* Hover Overlay */}
