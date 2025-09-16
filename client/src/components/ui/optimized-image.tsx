@@ -15,45 +15,43 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
   className,
   ...props
 }, ref) => {
-  const [imageSrc, setImageSrc] = useState(src);
-  const [isError, setIsError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [hasTriedWebP, setHasTriedWebP] = useState(false);
 
-  const handleError = () => {
-    if (!isError && srcFallback) {
-      setIsError(true);
-      setImageSrc(srcFallback);
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.currentTarget;
+
+    // If we're trying WebP and it fails, fall back to original
+    if (!hasTriedWebP && srcFallback) {
+      console.log(`🔄 WebP failed for ${src}, falling back to ${srcFallback}`);
+      setHasTriedWebP(true);
+      setCurrentSrc(srcFallback);
+      return;
+    }
+
+    // Call original onError if provided
+    if (props.onError) {
+      props.onError(e);
     }
   };
 
-  // Reset error state when src changes
+  // Debug logging for about image
   useEffect(() => {
-    setImageSrc(src);
-    setIsError(false);
-  }, [src]);
+    if (src.includes('Etive_1_')) {
+      console.log(`🖼️ About image loading: ${currentSrc}`);
+    }
+  }, [currentSrc, src]);
 
-  // For modern browsers, we can use the picture element for better fallback
-  if (srcFallback) {
-    return (
-      <picture>
-        <source srcSet={src} type="image/webp" />
-        <img
-          ref={ref}
-          src={srcFallback}
-          alt={alt}
-          loading={loading}
-          decoding="async"
-          className={className}
-          onError={handleError}
-          {...props}
-        />
-      </picture>
-    );
-  }
+  // Reset when src prop changes
+  useEffect(() => {
+    setCurrentSrc(src);
+    setHasTriedWebP(false);
+  }, [src]);
 
   return (
     <img
       ref={ref}
-      src={imageSrc}
+      src={currentSrc}
       alt={alt}
       loading={loading}
       decoding="async"

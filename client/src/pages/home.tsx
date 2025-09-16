@@ -23,7 +23,7 @@ const getHomeJsonLd = () => {
     "name": "Etive Studios",
     "description": "Professional videography services for brands, events, and creative projects",
     "url": domain,
-    "logo": `${domain}/attached_assets/ETIVE_STUDIO_WHITE_1751492571603.webp`,
+    "logo": `${domain}/attached_assets/ETIVE STUDIO WHITE_1751492571603.webp`,
     "image": `${domain}/attached_assets/stills-images/1.webp`,
     "contactPoint": {
       "@type": "ContactPoint",
